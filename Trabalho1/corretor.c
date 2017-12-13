@@ -18,7 +18,7 @@
 #include<string.h>
 
 //renomeie o arquivo do include abaixo para aluno-<MATRICULA>.c
-#include "aluno1.c"
+#include "aluno1.h"
 
 
 void testQ1();
@@ -31,11 +31,11 @@ void testQ6();
 int main(){
     
     testQ1();
-    /*testQ2();
+    testQ2();
     testQ3();
     testQ4();
     testQ5();
-    testQ6();*/
+    testQ6();
 }
 
 void testQ1(){
