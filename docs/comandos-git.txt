@@ -1,0 +1,28 @@
+> Comandos git
+
+- copiar projeto de uma conta para outra no github
+> use o fork do github
+
+
+- fazer o clone do projeto (clone = copiar do servidor {github} para máquina local)
+> git clone https://github.com/rafaelasfernandes/INF029
+
+- avisar o git quem vc é
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+
+
+- comando para ver o status do projeto
+> git status
+
+- adicionar arquivos
+> git add <nome arquivos>
+
+- comitar os arquivos
+> git commit <nome arquivo> -m "" 
+
+- mandar para o servidor
+> git push
+
+(Pede usuário e senha do github)
