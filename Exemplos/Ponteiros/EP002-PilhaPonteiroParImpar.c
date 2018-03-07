@@ -76,7 +76,7 @@ int inserirElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar, int 
 	int cheio = 0;
     scanf("%d", &i);
     if (i % 2 == 0){ //par
-		qualVetor = 2;
+		*qualVetor = 2;
 		if (*tamPar < size1){
 			vetPar[*tamPar] = i;
 			//*(vetPar+tamPar) = i;
@@ -85,7 +85,7 @@ int inserirElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar, int 
 		    cheio = 1;
 		}
     }else{
-    	qualVetor = 1;
+    	*qualVetor = 1;
 		if (*tamImpar < size1){
 			vetImpar[*tamImpar] = i;
 			//*(vetPar+tamImpar) = i;
@@ -98,7 +98,7 @@ int inserirElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar, int 
 	return cheio;
 }
 
-int listarElementos(int *vetPar, int *vetImpar, int tamPar, int tamImpar){
+void listarElementos(int *vetPar, int *vetImpar, int tamPar, int tamImpar){
 	printf("Vetor par\n");
 	for (int i = 0; i < tamPar; i++)
 			printf("%d\n",vetPar[i]);
@@ -106,7 +106,6 @@ int listarElementos(int *vetPar, int *vetImpar, int tamPar, int tamImpar){
 	for (int i = 0; i < tamImpar; i++)
 			printf("%d\n",vetImpar[i]);	
 
-	return 0;	
 }
 
 int removerElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar){
