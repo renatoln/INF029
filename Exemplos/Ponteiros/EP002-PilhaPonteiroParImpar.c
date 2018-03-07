@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "minhas_funcoes.h"
 
 int size1 = 5;
 
+int inserirElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar, int *qualVetor);
+void listarElementos(int *vetPar, int *vetImpar, int tamPar, int tamImpar);
+int removerElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar);
 void printMenu(){
 	printf("Digite a opção:\n");
 	printf("1 - Inserir\n");
@@ -57,7 +59,7 @@ int main()
 				listarElementos(vetPar, vetImpar, tamPar, tamImpar);
 				break;
 			}
-			default{
+			default:{
 				printf("Opção inválida\n");				
 			}
 		}
