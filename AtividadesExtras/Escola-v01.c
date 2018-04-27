@@ -54,7 +54,7 @@ int main(void)
         break;
       }
       case 1: {
-        printf("### Cadastro de Aluno ###\n");
+        printf("\n### Cadastro de Aluno ###\n");
         printf("Digite a matrícula: ");
         scanf("%d", &lista_aluno[qtd_alunos].matricula);
         getchar();
@@ -81,13 +81,22 @@ int main(void)
 
         printf("Digite o ano de nascimento: ");
         scanf("%d", &lista_aluno[qtd_alunos].data_nascimento.ano);
+        getchar();
+
+        printf("Digite o CPF: ");
+        fgets(lista_aluno[qtd_alunos].cpf, 15, stdin); 
+        ln = strlen(lista_aluno[qtd_alunos].cpf) - 1; 
+        if (lista_aluno[qtd_alunos].cpf[ln] == '\n')
+          lista_aluno[qtd_alunos].cpf[ln] = '\0';
 
         qtd_alunos++;
+
+        printf("\n");
 
         break;
       }
       case 2: {
-        printf("### Alunos Cadastrasdos ####\n");
+        printf("\n### Alunos Cadastrasdos ####\n");
         int i;
         for (i = 0; i < qtd_alunos; i++){
           printf("-----\n");
@@ -95,9 +104,14 @@ int main(void)
           printf("Nome: %s\n", lista_aluno[i].nome);
           printf("Sexo: %c\n", lista_aluno[i].sexo);
           printf("Data Nascimento: %d/%d/%d\n", lista_aluno[i].data_nascimento.dia, lista_aluno[i].data_nascimento.mes, lista_aluno[i].data_nascimento.ano);
+          printf("CPF: %s\n", lista_aluno[i].cpf);
 
         }
+        printf("-----\n\n");
         break;
+      }
+      default:{
+        printf("Opção Inválida\n");
       }
     }
   }
