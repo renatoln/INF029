@@ -1,0 +1,20 @@
+Lista de versões e funcionalidades
+
+#### Versão v01 ####
+- Estrutura básica para representar aluno
+- Estrutura inicial de menu e switch
+- Lista de alunos
+- Inserir aluno
+- Listar alunos
+
+> Para casa
+- fazer o mesmo para Professor, e Disciplina (ainda sem adicionar alunos)
+
+#### Versão v02 ####
+- Uso define TAM
+- Funções
+
+#### Versão v03 ####
+- Trabalhando com múltiplos arquivos
+
+
