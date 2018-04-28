@@ -22,6 +22,39 @@
 // #################################################
 
 #include <stdio.h>
+
+/*
+## função utilizada para testes  ##
+
+ somar = somar dois valores
+@objetivo
+    Somar dois valores x e y e retonar o resultado da soma
+@entrada
+    dois inteiros x e y
+@saida
+    resultado da soma (x + y)
+ */
+int somar(int x, int y){
+  int soma = 0;
+  return soma;
+}
+
+/*
+## função utilizada para testes  ##
+
+ fatorial = fatorial de um número
+@objetivo
+    calcular o fatorial de um número
+@entrada
+    um inteiro x
+@saida
+    fatorial de x -> x!
+ */
+int fatorial(int x){ //função utilizada para testes
+  int fat = 1;
+  return fat;
+}
+
 /*
  Q1 = validar data
 @objetivo
@@ -34,15 +67,15 @@
  */
 int q1(char *data){
     int datavalida = 1;
-    
+
     //printf("%s\n", data);
-    
-    
+
+
     if (datavalida)
         return 1;
     else
         return 0;
-    
+
 }
 
 /*
@@ -63,7 +96,7 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
     nDias = nDias;
     nMeses = nMeses;
     nAnos = nAnos;
-    
+
 
 
 
@@ -71,12 +104,12 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
     *qtdDias = nDias;
     *qtdAnos = nAnos;
     *qtdMeses = nMeses;
-    
+
     //printf("%s\n", datainicial);
     //printf("%s\n", datafinal);
-    
+
     return 1;
-    
+
 }
 
 
@@ -88,13 +121,13 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
     uma string texto, um caracter c e um inteiro que informa se é uma pesquisa Case Sensitive ou não. Se isCaseSensitive = 1, a pesquisa deve considerar diferências entre maiúsculos e minúsculos.
         Se isCaseSensitive != 1, a pesquisa não deve  considerar diferências entre maiúsculos e minúsculos.
  @saida
-    Um número n >= 0. 
+    Um número n >= 0.
  */
 int q3(char *texto, char c, int isCaseSensitive){
     int qtdOcorrencias = -1;
-    
+
     return qtdOcorrencias;
-    
+
 }
 
 /*
@@ -114,9 +147,9 @@ int q3(char *texto, char c, int isCaseSensitive){
  */
 int q4(char *strTexto, char *strBusca, int posicoes[30]){
     int qtdOcorrencias = -1;
-    
+
     return qtdOcorrencias;
-    
+
 }
 
 /*
