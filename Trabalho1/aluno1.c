@@ -88,7 +88,7 @@ int q1(char *data){
     1 -> cálculo de diferença realizado com sucesso
     2 -> datainicial inválida
     3 -> datafinal inválida
-    4 -> datainicial < datafinal
+    4 -> datainicial > datafinal
  */
 int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos){
     int nDias, nMeses, nAnos;
