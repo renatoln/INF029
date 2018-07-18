@@ -5,7 +5,6 @@ Probabilidade de Distribuição Binomial.c, 18/07/2018, Autor: Renato Novais
 */
 
 #include <stdio.h>
-#include <string.h>
 
 //calcula o exponencial de k elevado a y
 float exponencial(float k, float y){
