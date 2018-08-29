@@ -15,6 +15,6 @@ Lista de versões e funcionalidades
 - Funções
 
 #### Versão v03 ####
-- Trabalhando com múltiplos arquivos
+- Trabalhando com struct e alocação dinâmica
 
 
