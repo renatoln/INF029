@@ -17,4 +17,6 @@ Lista de versões e funcionalidades
 #### Versão v03 ####
 - Trabalhando com struct e alocação dinâmica
 
+#### Versão v04 ####
+- Lista Encadeada
 
