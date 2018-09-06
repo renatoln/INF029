@@ -36,9 +36,9 @@ typedef struct dados_aluno
 } Aluno;
 
 int opcaoMenuPrincipal();
-int inserirAluno(Aluno* inicio, int qtd_alunos);
-void listarAlunos(Aluno* inicio, int qtd_alunos);
-void finalizar(Aluno* inicio, int qtd_alunos);
+int inserirAluno(Aluno** inicio);
+void listarAlunos(Aluno** inicio);
+void finalizar(Aluno** inicio);
 
 int main(void)
 {    
@@ -61,7 +61,7 @@ int main(void)
         break;
       }
       case 1: {
-        retorno = inserirAluno(inicioLista, qtd_alunos);
+        retorno = inserirAluno(&inicioLista);
         if (retorno == SUCESSO_CADASTRO){
             printf("Cadastro realizado com sucesso\n");
             qtd_alunos++;
@@ -86,7 +86,7 @@ int main(void)
         break;
       }
       case 2: {
-        listarAlunos(inicioLista, qtd_alunos);
+        listarAlunos(&inicioLista);
         break;
       }
       default:{
@@ -95,7 +95,7 @@ int main(void)
     }
   }
 
-  finalizar(inicioLista, qtd_alunos);
+  finalizar(&inicioLista);
   return 1;
 
 }
@@ -111,13 +111,13 @@ int opcaoMenuPrincipal(){
 }
 
 
-int inserirAlunoNaLista(Aluno* inicio, Aluno* novoAluno){
+void inserirAlunoNaLista(Aluno** inicio, Aluno* novoAluno){
     Aluno *atual;
     
-    if (inicio == NULL)
-        inicio = novoAluno;
+    if (*inicio == NULL)
+        *inicio = novoAluno;
     else{
-        atual = inicio;
+        atual = *inicio;
 
         while(atual->prox != NULL)
             atual = atual->prox;
@@ -131,13 +131,12 @@ int inserirAlunoNaLista(Aluno* inicio, Aluno* novoAluno){
     
 }
 
-int inserirAluno(Aluno* inicio, int qtd_alunos){
+int inserirAluno(Aluno** inicio){
     
     //criar o aluno
     Aluno* novoAluno = (Aluno *)malloc(sizeof(Aluno));
     
     inserirAlunoNaLista(inicio, novoAluno);
-    inicio = novoAluno;
     
     printf("\n### Cadastro de Aluno ###\n");
     printf("Digite a matrícula: ");
@@ -191,11 +190,11 @@ int inserirAluno(Aluno* inicio, int qtd_alunos){
     
 }
 
-void listarAlunos(Aluno* inicio, int qtd_alunos){
+void listarAlunos(Aluno** inicio){
     printf("\n### Alunos Cadastrasdos ####\n");
     int i;
-    Aluno* alunoAtual = inicio;
-    if (inicio == NULL){
+    Aluno* alunoAtual = *inicio;
+    if (*inicio == NULL){
         printf("Lista Vazia\n");
         
     }else{
@@ -216,13 +215,13 @@ void listarAlunos(Aluno* inicio, int qtd_alunos){
 }
 
 
-void finalizar(Aluno* inicio, int qtd_alunos){
+void finalizar(Aluno** inicio){
     
     Aluno* alunoAtual;
     Aluno* alunoProx;
     
     if (inicio != NULL){
-        alunoAtual = inicio;
+        alunoAtual = *inicio;
         do{
             alunoProx = alunoAtual->prox;
             free(alunoAtual);
