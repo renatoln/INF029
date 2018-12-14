@@ -36,6 +36,7 @@
  */
 int somar(int x, int y){
   int soma = 0;
+  soma = x + y;
   return soma;
 }
 
@@ -91,23 +92,29 @@ int q1(char *data){
     4 -> datainicial > datafinal
  */
 int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos){
+    
+    //calcule os dados e armazene nas três variáveis a seguir
     int nDias, nMeses, nAnos;
 
-    nDias = nDias;
-    nMeses = nMeses;
-    nAnos = nAnos;
+
+    if (q1(datainicial) == 0)
+        return 2;
+
+    nDias = 4;
+    nMeses = 10;
+    nAnos = 2;
 
 
 
 
-
+    /*mantenha o código abaixo, para salvar os dados em 
+    nos parâmetros da funcao
+    */
     *qtdDias = nDias;
     *qtdAnos = nAnos;
     *qtdMeses = nMeses;
 
-    //printf("%s\n", datainicial);
-    //printf("%s\n", datafinal);
-
+    //coloque o retorno correto
     return 1;
 
 }
@@ -118,8 +125,8 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
  @objetivo
     Pesquisar quantas vezes um determinado caracter ocorre em um texto
  @entrada
-    uma string texto, um caracter c e um inteiro que informa se é uma pesquisa Case Sensitive ou não. Se isCaseSensitive = 1, a pesquisa deve considerar diferências entre maiúsculos e minúsculos.
-        Se isCaseSensitive != 1, a pesquisa não deve  considerar diferências entre maiúsculos e minúsculos.
+    uma string texto, um caracter c e um inteiro que informa se é uma pesquisa Case Sensitive ou não. Se isCaseSensitive = 1, a pesquisa deve considerar diferenças entre maiúsculos e minúsculos.
+        Se isCaseSensitive != 1, a pesquisa não deve  considerar diferenças entre maiúsculos e minúsculos.
  @saida
     Um número n >= 0.
  */
