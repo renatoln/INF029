@@ -31,7 +31,7 @@ https://git-scm.com/downloads
 > git add <nome arquivos>
 
 # comitar os arquivos
-> git commit <nome arquivo> -m "" 
+> git commit <nome arquivo> -m "Coloque aqui a mensagem do que vc fez" 
 
 # mandar para o servidor
 > git push
