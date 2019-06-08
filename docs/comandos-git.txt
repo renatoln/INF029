@@ -1,28 +1,40 @@
-> Comandos git
+### Orientações basícas de uso do Git
+Para mais orientações veja o tutorial em https://git-scm.com/book/pt-br/v1/Primeiros-passos
 
-- copiar projeto de uma conta para outra no github
-> use o fork do github
+# Instale o git na sua máquina, caso ainda não tenha
+https://git-scm.com/downloads
 
+# Crie um usuário e um repositório no github.com
+- Clique em Repository -> New
+- Forneça o nome, deixe público, Selecione a opção "Initialize this repository with a README"
+- suponha que o nome do repositorio criado seja INF029 e seu usuário seja renatoln
+- a url do repositorio vai ser algo do tipo: http://github.com/renatoln/inf029 
 
-- fazer o clone do projeto (clone = copiar do servidor {github} para máquina local)
+# fazer o clone do projeto (clone = copiar do servidor {github} para máquina local)
 > git clone https://github.com/rafaelasfernandes/INF029
 
-- avisar o git quem vc é
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
+# avisar ao git quem vc é. Isso só precisa ser feito a primeira vez
 
+- primeiramente verifique se já tem os dados preenchidos
+> git config --list
 
+- caso ainda não tenha os dados preenchidos para user.email e user.name, adicione.
+> git config --global user.email "you@example.com"
+> git config --global user.name "Your Name"
 
-- comando para ver o status do projeto
+# comando para ver o status do projeto
 > git status
 
-- adicionar arquivos
+# adicionar arquivos
 > git add <nome arquivos>
 
-- comitar os arquivos
+# comitar os arquivos
 > git commit <nome arquivo> -m "" 
 
-- mandar para o servidor
+# mandar para o servidor
 > git push
 
 (Pede usuário e senha do github)
+
+# copiar projeto de uma conta para outra no github
+> use o fork do github
