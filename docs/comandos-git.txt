@@ -8,10 +8,12 @@ https://git-scm.com/downloads
 - Clique em Repository -> New
 - Forneça o nome, deixe público, Selecione a opção "Initialize this repository with a README"
 - suponha que o nome do repositorio criado seja INF029 e seu usuário seja renatoln
-- a url do repositorio vai ser algo do tipo: http://github.com/renatoln/inf029 
+- a url do repositorio vai ser algo do tipo: https://github.com/renatoln/INF029 
+
+#abra o terminal (no linux) ou o git bash (no windows), para digitar os comandos abaixo
 
 # fazer o clone do projeto (clone = copiar do servidor {github} para máquina local)
-> git clone https://github.com/rafaelasfernandes/INF029
+> git clone https://github.com/renatoln/INF02
 
 # avisar ao git quem vc é. Isso só precisa ser feito a primeira vez
 
