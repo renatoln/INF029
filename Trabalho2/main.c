@@ -1,6 +1,8 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
+#include "EstruturaVetores.h"
+
 int menu();
 
 
@@ -32,6 +34,14 @@ int main(){
             }
             case 1:{ //inserir
                 //TODO
+                ret = inserirNumeroEmEstrutura(25, 5);
+                if (ret == INSERIDO_SUCESSO){
+                	print("Inserido com sucesso");
+                }else if (ret == SEM_ESPACO){
+                	print("Sem Espaço");
+                }else if (ret == SEM_ESTRUTURA_AUXILIAR){
+                	print("Sem estrutura Auxiliar");	
+                }
                 break;
             }
 
