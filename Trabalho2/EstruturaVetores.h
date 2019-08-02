@@ -9,3 +9,4 @@
 int criarEstruturaAuxiliar(int tamanho, int posicao);
 int inserirNumeroEmEstrutura(int valor, int posicao);
 int listaEstruturaAuxiliar(int posicao);
+void dobrar(int *x);

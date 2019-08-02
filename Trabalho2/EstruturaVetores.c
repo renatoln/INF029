@@ -7,6 +7,14 @@
 
 int vetorPrincipal[TAM];
 
+void dobrar(int *x){
+    
+    *x = *x * 2;
+    
+    
+}
+
+
 int criarEstruturaAuxiliar(int tamanho, int posicao){
     
     int retorno = 0;

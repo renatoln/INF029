@@ -5,7 +5,7 @@
 
 int menu();
 
-
+void dobrar(int *x);
 
 int menu(){
     int op;
@@ -14,7 +14,7 @@ int menu(){
     printf("1 - Inserir\n");
     printf("2 - Excluir\n");
     printf("3 - Listar\n");
-    printf("4 - \n");
+    printf("4 - Dobrar Numero\n");
     printf("5 - \n");
     scanf("%d", &op);
     return op;
@@ -47,6 +47,20 @@ int main(){
 
             case 2:{ //excluir
                 //TODO
+                break;
+            }
+            
+            case 4:{ //dobrar
+                //ler um numero
+                int valor;
+                scanf("%i", &valor);
+                
+                dobrar(&valor);
+                
+                //passar para um funcao (void dobrar(...)) que recebe o numero e dobra (EstruturaVetores.c)
+                
+                printf("%i", valor);
+                
                 break;
             }
             default:{
