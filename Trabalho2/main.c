@@ -24,7 +24,7 @@ int main(){
     
     int op;
     int sair = 0;
-    
+    int ret;
     while (!sair){
         op = menu();
         switch (op){
@@ -35,12 +35,12 @@ int main(){
             case 1:{ //inserir
                 //TODO
                 ret = inserirNumeroEmEstrutura(25, 5);
-                if (ret == INSERIDO_SUCESSO){
-                	print("Inserido com sucesso");
+                if (ret == SUCESSO){
+                	printf("Inserido com sucesso");
                 }else if (ret == SEM_ESPACO){
-                	print("Sem Espaço");
+                	printf("Sem Espaço");
                 }else if (ret == SEM_ESTRUTURA_AUXILIAR){
-                	print("Sem estrutura Auxiliar");	
+                	printf("Sem estrutura Auxiliar");	
                 }
                 break;
             }

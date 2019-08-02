@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #define TAM 10
 
+
+#include "EstruturaVetores.h"
+
 int vetorPrincipal[TAM];
 
 int criarEstruturaAuxiliar(int tamanho, int posicao){
@@ -44,7 +47,7 @@ int inserirNumeroEmEstrutura(int valor, int posicao){
         if (existeEstruturaAuxiliar){
           if (temEspaco){
               //insere 
-              retorno = INSERIDO_SUCESSO;  
+              retorno = SUCESSO;  
           }else{
               retorno = SEM_ESPACO;
           }
@@ -62,7 +65,7 @@ int ehPosicaoValida(int posicao){
     int retorno = 0;
     if (posicao < 1 || posicao > 10){
         retorno = POSICAO_INVALIDA;
-    }else retorno = SUCESSO
+    }else retorno = SUCESSO;
 
     return retorno;
 
