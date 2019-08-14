@@ -123,7 +123,7 @@ int ehPosicaoValida(int posicao){
 
 }
 /*
-Objetivo: retorna os números da estrutura auxiliar da posição 'posicao'.
+Objetivo: retorna os números da estrutura auxiliar da posição 'posicao (1..10)'.
 os números devem ser armazenados em vetorAux
 
 Retorno (int)
@@ -142,11 +142,11 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]){
 
 
 /*
-Objetivo: retorna os números ordenados da estrutura auxiliar da posição 'posicao'.
+Objetivo: retorna os números ordenados da estrutura auxiliar da posição 'posicao (1..10)'.
 os números devem ser armazenados em vetorAux
 
 Rertono (int)
-    SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
+    SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao (1..10)'
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
@@ -206,3 +206,31 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho){
     return retorno;
 
 }
+
+/*
+Objetivo: retorna a quantidade de elementos da estrutura auxiliar da posição 'posicao'.
+
+Retorno (int)
+    POSICAO_INVALIDA - posição inválida
+    ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
+    Um número int > 0 correpondente a quantidade de elementos da estrutura
+*/
+int getQuantidadeElementosEstruturaAuxiliar(int posicao){
+
+    int retorno = 0;
+
+
+    return retorno;
+
+}
+
+/*
+Objetivo: liberar todos os espaços de memória das estruturas auxiliares.
+
+*/
+
+void liberarEspacosEstruturasAuxiliares(){
+    
+    
+}
+

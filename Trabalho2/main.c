@@ -30,6 +30,7 @@ int main(){
         switch (op){
             case 0:{
                 sair =1;
+                liberarEspacosEstruturasAuxiliares();
                 break;
             }
             case 1:{ //inserir
