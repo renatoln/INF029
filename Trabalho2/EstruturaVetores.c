@@ -126,11 +126,10 @@ int ehPosicaoValida(int posicao){
 Objetivo: retorna os números da estrutura auxiliar da posição 'posicao'.
 os números devem ser armazenados em vetorAux
 
-Rertono (int)
+Retorno (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
-    SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
 */
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]){
 

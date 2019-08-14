@@ -13,7 +13,7 @@ int menu(){
     printf("0 - Sair\n");
     printf("1 - Inserir\n");
     printf("2 - Excluir\n");
-    printf("3 - Listar\n");
+    printf("3 - Listar uma estrutura\n");
     printf("4 - Dobrar Numero\n");
     printf("5 - \n");
     scanf("%d", &op);
@@ -49,8 +49,35 @@ int main(){
                 //TODO
                 break;
             }
+
+            case 3:{ //recuperar dados estrutura auxiliar
+                int posicao, retorno;
+                print("Qual a estrutura a ser listada (1..10)?");
+                scanf("%d", &posicao);
+                
+                int qtd =  getQuantidadeElementosEstruturaAuxiliar(posicao);
+                
+                if (qtd == POSICAO_INVALIDA){
+                    print ("Posição inválida");
+                }else{ // existe elemento
+                    int vetorAux[qtd];
+                
+                    retorno = getDadosEstruturaAuxiliar(posicao, vetorAux);
+                    
+                    if (retorno == SUCESSO){
+                        //imprimir para os dados para o usuário
+                        int i = 0;
+                        for (; i < qtd; i++){
+                            print ("%d", vetorAux[i]);
+                            
+                        }
+                    }                        
+                }
+                break;
+            }
             
-            case 4:{ //dobrar
+            
+            case 10:{ //dobrar
                 //ler um numero
                 int valor;
                 scanf("%i", &valor);
@@ -63,6 +90,7 @@ int main(){
                 
                 break;
             }
+            
             default:{
                 printf("opcao inválida\n");
             }

@@ -1,3 +1,4 @@
+#define SEM_SUCESSO -1
 #define SUCESSO 1
 #define SEM_ESPACO 2
 #define SEM_ESTRUTURA_AUXILIAR 3
@@ -18,4 +19,5 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[]);
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
+int getQuantidadeElementosEstruturaAuxiliar(int posicao);
 void dobrar(int *x);
