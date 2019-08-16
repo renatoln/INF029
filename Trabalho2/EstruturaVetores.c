@@ -192,7 +192,8 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]){
 }
 
 /*
-Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho'
+Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho' + tamanho atual
+Suponha o tamanho inicial = x, e novo tamanho = n. O tamanho resultante deve ser x + n. Sendo que x + n deve ser sempre >= 1
 
 Rertono (int)
     SUCESSO - foi modificado corretamente o tamanho da estrutura auxiliar
