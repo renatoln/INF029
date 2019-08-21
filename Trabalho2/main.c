@@ -21,7 +21,7 @@ int menu(){
 }
 
 int main(){
-    
+    inicializar();
     int op;
     int sair = 0;
     int ret;
@@ -30,7 +30,7 @@ int main(){
         switch (op){
             case 0:{
                 sair =1;
-                liberarEspacosEstruturasAuxiliares();
+                finalizar();
                 break;
             }
             case 1:{ //inserir

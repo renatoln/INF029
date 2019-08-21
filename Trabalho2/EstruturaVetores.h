@@ -19,5 +19,6 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
 int getQuantidadeElementosEstruturaAuxiliar(int posicao);
-void liberarEspacosEstruturasAuxiliares();
+void inicializar();
+void finalizar();
 void dobrar(int *x);

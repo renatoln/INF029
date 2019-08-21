@@ -227,11 +227,22 @@ int getQuantidadeElementosEstruturaAuxiliar(int posicao){
 }
 
 /*
-Objetivo: liberar todos os espaços de memória das estruturas auxiliares.
+Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
 
 */
 
-void liberarEspacosEstruturasAuxiliares(){
+void inicializar(){
+    
+    
+}
+
+/*
+Objetivo: finaliza o programa. deve ser chamado ao final do programa 
+para poder liberar todos os espaços de memória das estruturas auxiliares.
+
+*/
+
+void finalizar(){
     
     
 }
