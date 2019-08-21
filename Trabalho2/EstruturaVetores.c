@@ -210,12 +210,12 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho){
 }
 
 /*
-Objetivo: retorna a quantidade de elementos da estrutura auxiliar da posição 'posicao'.
+Objetivo: retorna a quantidade de elementos preenchidos da estrutura auxiliar da posição 'posicao'.
 
 Retorno (int)
     POSICAO_INVALIDA - posição inválida
     ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
-    Um número int > 0 correpondente a quantidade de elementos da estrutura
+    Um número int > 0 correpondente a quantidade de elementos preenchidos da estrutura
 */
 int getQuantidadeElementosEstruturaAuxiliar(int posicao){
 
