@@ -214,6 +214,7 @@ Objetivo: retorna a quantidade de elementos preenchidos da estrutura auxiliar da
 
 Retorno (int)
     POSICAO_INVALIDA - posição inválida
+    SEM_ESTRUTURA_AUXILIAR - sem estrutura auxiliar
     ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
     Um número int > 0 correpondente a quantidade de elementos preenchidos da estrutura
 */
