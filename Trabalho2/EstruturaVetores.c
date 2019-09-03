@@ -228,6 +228,39 @@ int getQuantidadeElementosEstruturaAuxiliar(int posicao){
 }
 
 /*
+Objetivo: montar a lista encadeada com cabeçote com todos os números presentes em todas as estruturas.
+
+Retorno (No*)
+    NULL, caso não tenha nenhum número nas listas
+    No*, ponteiro para o início da lista com cabeçote
+*/
+No* montarListaEncadeadaComCabecote(){
+
+    return NULL;
+
+}
+
+/*
+Objetivo: retorna os números da lista enceada com cabeçote armazenando em vetorAux.
+Retorno void
+*/
+void getDadosListaEncadeadaComCabecote(No* inicio, int vetorAux[]){
+
+
+}
+
+/*
+Objetivo: Destruir a lista encadeada com cabeçote a partir de início.
+
+Retorno 
+    void.
+*/
+void destruirListaEncadeadaComCabecote(No* inicio){
+   
+
+}
+
+/*
 Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
 
 */

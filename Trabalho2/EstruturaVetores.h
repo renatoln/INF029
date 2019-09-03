@@ -9,6 +9,12 @@
 #define NUMERO_INEXISTENTE -9
 #define NOVO_TAMANHO_INVALIDO -10
 
+typedef struct reg {
+	int conteudo;
+  struct reg *prox;
+} No;
+
+
 int criarEstruturaAuxiliar(int tamanho, int posicao);
 int inserirNumeroEmEstrutura(int valor, int posicao);
 int excluirNumeroDoFinaldaEstrutura(int posicao);
@@ -19,6 +25,10 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
 int getQuantidadeElementosEstruturaAuxiliar(int posicao);
+No* montarListaEncadeadaComCabecote();
+void getDadosListaEncadeadaComCabecote(No* inicio, int vetorAux[]);
+void destruirListaEncadeadaComCabecote(No* inicio);
+
 void inicializar();
 void finalizar();
 void dobrar(int *x);
