@@ -8,6 +8,7 @@ void testeCriarEstrutura();
 void testeInserirComEstrutura();
 void testeExcluir();
 void testeListar();
+void testeRetornarTodosNumeros();
 
 int main(){
     inicializar();
