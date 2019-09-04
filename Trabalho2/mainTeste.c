@@ -16,6 +16,7 @@ int main(){
     testeInserirComEstrutura();
     testeExcluir();
     testeListar();
+    testeRetornarTodosNumeros();
     finalizar();
 
 }  
@@ -79,5 +80,60 @@ void testeListar(){
 
     printf("%d\n",vet[0] == -9);
     printf("%d\n",vet[1] == 7);
+    
+    printf("%d\n",excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
+    printf("%d\n",excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
 
 } 
+
+
+void testeRetornarTodosNumeros(){
+    int vet1[2];
+    printf("%d\n",getDadosDeTodasEstruturasAuxiliares(vet1) == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS);
+    
+    printf("%d\n",getDadosOrdenadosDeTodasEstruturasAuxiliares(vet1) == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS);
+    
+    printf("%d\n",inserirNumeroEmEstrutura(3, 2) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(8, 2) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(0, 2) == SUCESSO);
+    
+    printf("%d\n",criarEstruturaAuxiliar(10, 5) == SUCESSO);
+    
+    printf("%d\n",inserirNumeroEmEstrutura(1, 5) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(34, 5) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(12, 5) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(6, 5) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(27, 5) == SUCESSO);
+    printf("%d\n",inserirNumeroEmEstrutura(-6, 5) == SUCESSO);
+    
+    int vet[9];
+
+    printf("%d\n",getDadosDeTodasEstruturasAuxiliares(vet) == SUCESSO);
+        
+    printf("%d\n",vet[0] == 3);
+    printf("%d\n",vet[1] == 8);
+    printf("%d\n",vet[2] == 0);
+    printf("%d\n",vet[3] == 1);
+    printf("%d\n",vet[4] == 34);
+    printf("%d\n",vet[5] == 12);
+    printf("%d\n",vet[6] == 6);
+    printf("%d\n",vet[7] == 27);
+    printf("%d\n",vet[8] == -6);
+    
+    int vet2[9];
+    
+    printf("%d\n",getDadosOrdenadosDeTodasEstruturasAuxiliares(vet2) == SUCESSO);
+        
+    printf("%d\n",vet2[0] == -6);
+    printf("%d\n",vet2[1] == 0);
+    printf("%d\n",vet2[2] == 1);
+    printf("%d\n",vet2[3] == 3);
+    printf("%d\n",vet2[4] == 6);
+    printf("%d\n",vet2[5] == 8);
+    printf("%d\n",vet2[6] == 12);
+    printf("%d\n",vet2[7] == 27);
+    printf("%d\n",vet2[8] == 34);
+    
+    
+
+}
