@@ -47,8 +47,6 @@ void testeInserirComEstrutura(){
     printf("%d\n",inserirNumeroEmEstrutura(-2, 2) == SUCESSO);
     printf("%d\n",inserirNumeroEmEstrutura(6, 2) == SUCESSO);
     printf("%d\n",inserirNumeroEmEstrutura(5, 2) == SEM_ESPACO);
-    printf("%d\n",excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
-
 } 
 
 void testeExcluir(){
