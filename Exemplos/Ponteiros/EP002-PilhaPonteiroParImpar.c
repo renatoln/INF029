@@ -40,7 +40,7 @@ int main()
 					
 					if (qualVetor == 2)
 						printf("Vetor PAR Cheio\n");	
-					else
+					etamImparlse
 						printf("Vetor IMPAR Cheio\n");	
 					
 				}else{
@@ -94,7 +94,7 @@ int inserirElemento(int *vetPar, int *vetImpar, int *tamPar, int *tamImpar, int 
 			*tamImpar = *tamImpar + 1;
 		}else{
 		    cheio = 1;
-		}	
+		}	tamImpar
 	
 	}
 	return cheio;
