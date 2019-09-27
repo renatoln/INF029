@@ -1,33 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define TAM 10
+
+
 #include "EstruturaVetores.h"
 
-void iniciarPrincipal(cell vetorPrincipal[])
-{
-    int i;
+int vetorPrincipal[TAM];
 
-	for(i=0;i<10;i++)
-	{
-        vetorPrincipal[i].vetorAux = NULL;
-        vetorPrincipal[i].posicaoAtual=0;
-    	vetorPrincipal[i].tam=0;
-	}
-}
+void dobrar(int *x){
 
-int receberValor()
-{
-	int x;
-	printf("Informe o valor a ser colocado:\n");
-	scanf("%d", &x);
-	return x;
-}
-
-void dobrar(int *x)
-{
     *x = *x * 2;
-}
 
+
+}
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
 com tamanho 'tamanho'
@@ -39,45 +24,23 @@ Rertono (int)
     SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
     TAMANHO_INVALIDO - o tamanho tem inteiro maior ou igual a 1
 */
-int criarEstruturaAuxiliar(int tamanho, int posicao, int valor)
-{	
-	int retorno = 0;
+int criarEstruturaAuxiliar(int tamanho, int posicao){
 
-	if(posicao < 0 && posicao > 9)
-	{
-		retorno = POSICAO_INVALIDA;
-		return retorno;
-	}
-	
+    int retorno = 0;
+    // a posicao pode já existir estrutura auxiliar
+    retorno = JA_TEM_ESTRUTURA_AUXILIAR;
+    // se posição é um valor válido {entre 1 e 10}
+    retorno = POSICAO_INVALIDA;
+    // o tamanho ser muito grande
+    retorno = SEM_ESPACO_DE_MEMORIA;
+    // o tamanho nao pode ser menor que 1
+    retorno = TAMANHO_INVALIDO;
+    // deu tudo certo, crie
+    retorno = SUCESSO;
 
-     
-    if(tamanho <= 1 && tamanho >= 50)
-		{
-        	printf("\nERRO !!! TAMANHO INVALIDO!\n");
-        	
-			retorno = TAMANHO_INVALIDO;
-			return retorno;
-		}
-			
-	
-	vetorPrincipal[posicao].vetorAux=(int*)malloc(tamanho * sizeof(int));
+    return retorno;
 
-	if(vetorPrincipal[posicao].vetorAux==NULL)
-		{	
- 			retorno = SEM_ESPACO_DE_MEMORIA;
-			return retorno;
-		} 
-	else 
-		{
-			vetorPrincipal[posicao].vetorAux[vetorPrincipal[posicao].posicaoAtual] = valor;
-			vetorPrincipal[posicao].posicaoAtual++;
-			retorno = SUCESSO;
-		}
-
-			
-		return retorno;	
-} 
-	   
+}
 
 /*
 Objetivo: inserir número 'valor' em estrutura auxiliar da posição 'posicao'
@@ -88,40 +51,29 @@ Rertono (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 CONSTANTES
 */
-int inserirNumeroEmEstrutura(int valor, int posicao)
-{
+int inserirNumeroEmEstrutura(int valor, int posicao){
 
-    	int retorno;
-		int tamanho;
+    int retorno = 0;
+    int existeEstruturaAuxiliar = 0;
+    int temEspaco = 0;
+    int posicao_invalida = 0;
 
-   	if(posicao < 0 || posicao > 9)
-		{
-			retorno = POSICAO_INVALIDA;
-			return retorno;
-		}
+    if (posicao_invalida)
+        retorno = POSICAO_INVALIDA;
+    else{
+        // testar se existe a estrutura auxiliar
+        if (existeEstruturaAuxiliar){
+          if (temEspaco){
+              //insere
+              retorno = SUCESSO;
+          }else{
+              retorno = SEM_ESPACO;
+          }
+        }else{
+          retorno = SEM_ESTRUTURA_AUXILIAR;
+        }
+    }
 
-   	if(vetorPrincipal[posicao].vetorAux == NULL)
-		{
-			printf("Estrutura auxiliar ainda nao incializada!\n");
-
-			retorno = criarEstruturaAuxiliar(vetorPrincipal[posicao].tam,posicao,valor);
-		}
-	else 
-		{
-
-			if(vetorPrincipal[posicao].posicaoAtual >= vetorPrincipal[posicao].tam)
-				{
-					retorno = SEM_ESPACO;
-					return retorno;
-				}
-			
-				printf("Estrutura auxiliar ja criada!\n");
-				vetorPrincipal[posicao].vetorAux[vetorPrincipal[posicao].posicaoAtual] = valor;
-				vetorPrincipal[posicao].posicaoAtual++;
-
-		}	
-	
-	retorno = SUCESSO;
     return retorno;
 
 }
@@ -137,30 +89,9 @@ Rertono (int)
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
-int excluirNumeroDoFinaldaEstrutura(int posicao)
-{
-		
-  	int retorno;
-		
-	if(posicao < 0 && posicao > 9)
-		{
-			retorno = POSICAO_INVALIDA;
-			return retorno;
-		}
-
-   	if(vetorPrincipal[posicao].vetorAux == NULL)
-		{
-			printf("Estrutura auxiliar ainda nao incializada!\n");
-			retorno = SEM_ESTRUTURA_AUXILIAR;
-			return retorno;
-		}
-	else
-		{
-			vetorPrincipal[posicao].posicaoAtual--;
-			retorno = SUCESSO;
-			return retorno;
-		}	
-
+int excluirNumeroDoFinaldaEstrutura(int posicao){
+  int retorno = SUCESSO;
+  return retorno;
 }
 
 /*
@@ -176,42 +107,9 @@ Rertono (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 
 */
-int excluirNumeroEspecificoDeEstrutura(int valor, int posicao)
-{
-  	int retorno;
-	int i,tamanho, j = 1;
-
-	tamanho = vetorPrincipal[posicao].posicaoAtual;
-
-	if(posicao < 0 && posicao > 9)
-		{
-			retorno = POSICAO_INVALIDA;
-			return retorno;
-		}
-
-   	if(vetorPrincipal[posicao].vetorAux == NULL)
-		{
-			printf("Estrutura auxiliar ainda nao incializada!\n");
-			retorno = SEM_ESTRUTURA_AUXILIAR;
-			return retorno;
-		}
-	else
-		{
-			for(i = 0; i < tamanho; i++)
-				{
-					if(vetorPrincipal[posicao].vetorAux[i] == valor)
-						{
-							while(j <= tamanho)
-							{
-								vetorPrincipal[posicao].vetorAux[i] = vetorPrincipal[posicao].vetorAux[i = i + j];
-								j++;
-							}
-							vetorPrincipal[posicao].posicaoAtual--;
-						}
-				}
-			retorno = SUCESSO;
-			return retorno;
-		}
+int excluirNumeroEspecificoDeEstrutura(int valor, int posicao){
+  int retorno = SUCESSO;
+  return retorno;
 }
 
 // se posição é um valor válido {entre 1 e 10}
@@ -235,34 +133,10 @@ Retorno (int)
 */
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]){
 
-    int retorno;
-    int i, tam;
-    
-    
-    if(posicao < 0 && posicao > 9)
-		{
-			retorno = POSICAO_INVALIDA;
-			return retorno;
-		}
-		
-	if(vetorPrincipal[posicao].vetorAux == NULL)
-		{
-			printf("Estrutura auxiliar ainda nao incializada!\n");
-			retorno = SEM_ESTRUTURA_AUXILIAR;
-			return retorno;
-		}
-	else
-        {
-                tam = vetorPrincipal[posicao].posicaoAtual;
-                
-                for(i = 0; i <= tam; i++)
-                    {
-                        vetorAux[i] = vetorPrincipal[posicao].vetorAux[i];
-                    }
-                    
-            retorno = SUCESSO;
-			return retorno;    
-        }
+    int retorno = 0;
+
+
+    return retorno;
 
 }
 
@@ -291,7 +165,8 @@ os números devem ser armazenados em vetorAux
 
 Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
-    TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - nao tem nenhum valor
+    SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
+    POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]){
 
@@ -306,7 +181,8 @@ os números devem ser armazenados em vetorAux
 
 Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
-    TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - nao tem nenhum valor
+    SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
+    POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]){
 
@@ -316,58 +192,31 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]){
 }
 
 /*
-Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho'
+Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho' + tamanho atual
+Suponha o tamanho inicial = x, e novo tamanho = n. O tamanho resultante deve ser x + n. Sendo que x + n deve ser sempre >= 1
 
 Rertono (int)
     SUCESSO - foi modificado corretamente o tamanho da estrutura auxiliar
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
     NOVO_TAMANHO_INVALIDO - novo tamanho não pode ser negativo
+    SEM_ESPACO_DE_MEMORIA - erro na alocação do novo valor
 */
-int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
-{
+int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho){
 
     int retorno = 0;
-
-	if(posicao < 0 && posicao > 9)
-	{
-		retorno = POSICAO_INVALIDA;
-		return retorno;
-	}
-	
-
-     
-    if(novoTamanho < 1 && novoTamanho > 50)
-		{
-        	printf("\nERRO !!! TAMANHO INVALIDO!\n");
-        	
-			retorno = TAMANHO_INVALIDO;
-			return retorno;
-		}
-			
-	vetorPrincipal[posicao].tam = novoTamanho;
-	vetorPrincipal[posicao].vetorAux = (int*)realloc(vetorPrincipal[posicao].vetorAux, vetorPrincipal[posicao].tam * sizeof(int));
-
-	if(vetorPrincipal[posicao].vetorAux == NULL)
-			{
-				printf("Realloc nao efetuado por falta de memoria!\n");
-				retorno = SEM_ESPACO_DE_MEMORIA;
-				return retorno;
-			}
-
-
-	retorno = SUCESSO;		
-	return retorno;	
+    return retorno;
 
 }
 
 /*
-Objetivo: retorna a quantidade de elementos da estrutura auxiliar da posição 'posicao'.
+Objetivo: retorna a quantidade de elementos preenchidos da estrutura auxiliar da posição 'posicao'.
 
 Retorno (int)
     POSICAO_INVALIDA - posição inválida
+    SEM_ESTRUTURA_AUXILIAR - sem estrutura auxiliar
     ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
-    Um número int > 0 correpondente a quantidade de elementos da estrutura
+    Um número int > 0 correpondente a quantidade de elementos preenchidos da estrutura
 */
 int getQuantidadeElementosEstruturaAuxiliar(int posicao){
 
@@ -379,50 +228,56 @@ int getQuantidadeElementosEstruturaAuxiliar(int posicao){
 }
 
 /*
-Objetivo: liberar todos os espaços de memória das estruturas auxiliares.
+Objetivo: montar a lista encadeada com cabeçote com todos os números presentes em todas as estruturas.
+
+Retorno (No*)
+    NULL, caso não tenha nenhum número nas listas
+    No*, ponteiro para o início da lista com cabeçote
+*/
+No* montarListaEncadeadaComCabecote(){
+
+    return NULL;
+
+}
+
+/*
+Objetivo: retorna os números da lista enceada com cabeçote armazenando em vetorAux.
+Retorno void
+*/
+void getDadosListaEncadeadaComCabecote(No* inicio, int vetorAux[]){
+
+
+}
+
+/*
+Objetivo: Destruir a lista encadeada com cabeçote a partir de início.
+
+Retorno 
+    void.
+*/
+void destruirListaEncadeadaComCabecote(No* inicio){
+   
+
+}
+
+/*
+Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
 
 */
 
-void liberarEspacosEstruturasAuxiliares()
-{
-    int i;
-	for(i=0;i<10;i++)
-		{
-        	if(vetorPrincipal[i].vetorAux != NULL)
-            	free(vetorPrincipal[i].vetorAux);
-		}
+void inicializar(){
+    
     
 }
 
-void imprimirEstruturaAux(int posicao, cell vetorPrincipal[])
-{
-	int i, j, tamanhoUnitario, valorUnitario, tamanhoPrint;
+/*
+Objetivo: finaliza o programa. deve ser chamado ao final do programa 
+para poder liberar todos os espaços de memória das estruturas auxiliares.
 
-	tamanhoUnitario = vetorPrincipal[posicao].posicaoAtual;
-	tamanhoPrint = vetorPrincipal[posicao].tam; 
+*/
 
-	printf("O tamanho alocado dinamicamente para a posição %d da estrutura principal eh: %d\n", i+1, tamanhoPrint);
-
-	for(j=0;j<tamanhoUnitario;j++)
-		{
-			valorUnitario = vetorPrincipal[posicao].vetorAux[j];
-			if(valorUnitario!=0)
-				{
-						printf("O elemento %d contem o valor: %d\n", j, valorUnitario);
-				}
-		}
-	
+void finalizar(){
+    
+    
 }
 
-void swift(cell vetorPrincipal[], int indicePrincipal, int posAtual, int tamTotal, int valor){
-	int i, aux, tamanho;
-	
-	tamanho = vetorPrincipal[indicePrincipal].posicaoAtual;	
-	
-	for(i = 0; i < tamanho; i++)
-	{
-		vetorPrincipal[indicePrincipal].vetorAux[posAtual] = vetorPrincipal[indicePrincipal].vetorAux[posAtual + i];
-	}
-
-	vetorPrincipal[indicePrincipal].posicaoAtual--;
-}

@@ -10,19 +10,13 @@
 #define NOVO_TAMANHO_INVALIDO -10
 #define TODAS_ESTRUTURAS_AUXILIARES_VAZIAS -11
 
-typedef struct vetor
-{
-	int tam;
-	int *vetorAux;
-	int posicaoAtual;
-	int posicaoPrint;
+typedef struct reg {
+	int conteudo;
+  struct reg *prox;
+} No;
 
-}cell;
 
-cell vetorPrincipal[10];
-
-void iniciarPrincipal(cell vetorPrincipal[]);
-int criarEstruturaAuxiliar(int tamanho, int posicao, int valor);
+int criarEstruturaAuxiliar(int tamanho, int posicao);
 int inserirNumeroEmEstrutura(int valor, int posicao);
 int excluirNumeroDoFinaldaEstrutura(int posicao);
 int excluirNumeroEspecificoDeEstrutura(int valor, int posicao);
@@ -32,8 +26,10 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
 int getQuantidadeElementosEstruturaAuxiliar(int posicao);
-void liberarEspacosEstruturasAuxiliares();
+No* montarListaEncadeadaComCabecote();
+void getDadosListaEncadeadaComCabecote(No* inicio, int vetorAux[]);
+void destruirListaEncadeadaComCabecote(No* inicio);
+
+void inicializar();
+void finalizar();
 void dobrar(int *x);
-int receberValor();
-void imprimirEstruturaAux(int posicao,cell vetorPrincipal[]);
-void swift(cell vetorPrincipal[], int indicePrincipal, int posAtual, int tamTotal, int valor);
