@@ -250,7 +250,7 @@ void testeListaEncadeada(){
     printf("%d\n",vet[6] == 12);
     printf("%d\n",vet[7] == 6);
     printf("%d\n",vet[8] == 27);
-    printf("%d\n",vet[8] == -6);
+    printf("%d\n",vet[9] == -6);
 
     destruirListaEncadeadaComCabecote(inicio);
 
