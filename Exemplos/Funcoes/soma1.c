@@ -1,13 +1,21 @@
 void soma();
 
 int main(){	
-	imprimir_soma();
+	soma();
 	return 0;
 }
 
 void soma(){
-	int x, y, resultado;
+	int x, y, a, b, resultado;
 	scanf("%d", &x);
 	scanf("%d", &y);
-	printf("%d", a + b);
+    resultado = x + y;
+	printf("%d", resultado);
+
+    scanf("%d", &a);
+	scanf("%d", &b);
+    resultado = a + b;
+	printf("%d", resultado);
+	soma();
 }
+

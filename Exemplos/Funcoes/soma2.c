@@ -4,6 +4,7 @@ int soma();
 
 int main(){	
 	int res;
+	printf("teste");
 	res = soma();
 	printf("%d", res);
 	return 0;
