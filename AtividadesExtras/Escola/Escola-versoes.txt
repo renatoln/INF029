@@ -20,3 +20,7 @@ Lista de versões e funcionalidades
 #### Versão v04 ####
 - Lista Encadeada
 
+#### Versão v05 ####
+- Validação inicial de data
+
+
