@@ -53,13 +53,13 @@ int main(){
 
             case 3:{ //recuperar dados estrutura auxiliar
                 int posicao, retorno;
-                print("Qual a estrutura a ser listada (1..10)?");
+                printf("Qual a estrutura a ser listada (1..10)?");
                 scanf("%d", &posicao);
                 
                 int qtd =  getQuantidadeElementosEstruturaAuxiliar(posicao);
                 
                 if (qtd == POSICAO_INVALIDA){
-                    print ("Posição inválida");
+                    printf ("Posição inválida");
                 }else{ // existe elemento
                     int vetorAux[qtd];
                 
@@ -69,7 +69,7 @@ int main(){
                         //imprimir para os dados para o usuário
                         int i = 0;
                         for (; i < qtd; i++){
-                            print ("%d", vetorAux[i]);
+                            printf ("%d", vetorAux[i]);
                             
                         }
                     }                        
