@@ -17,8 +17,8 @@ typedef struct reg {
 No* criarElemento(int valor){
 	No *novo = (No *)malloc(sizeof(No));
 	if(novo == NULL){
-			printf("Falta Memoria\n");
-			exit(1);
+        printf("Falta Memoria\n");
+        exit(1);
 	}
 	novo->conteudo = valor;
 	novo->prox = NULL;
@@ -65,7 +65,7 @@ void inserirNoFinalComCabecote(No *inicio, int val){
 void listarElementos(No* inicio){
 	No *p;
 	printf ("lista\n");
-  for (p = inicio; p != NULL; p = p->prox)
+    for (p = inicio; p != NULL; p = p->prox)
       printf ("%d\n", p->conteudo);
 }
 
@@ -86,7 +86,7 @@ int main()
 	int n, i;
 	No *inicioListaSemCabecote = NULL;
 
-  No *inicioListaComCabecote = (No*) malloc(sizeof(No));
+    No *inicioListaComCabecote = (No*) malloc(sizeof(No));
 	inicioListaComCabecote->prox = NULL;
 	printf("Digite um número!\n");
 	scanf("%d", &n);
@@ -97,11 +97,11 @@ int main()
 
 	for (i = 1; i <= n; i++){
 		inserirNoFinalSemCabecote(&inicioListaSemCabecote, i);
-    inserirNoFinalComCabecote(inicioListaComCabecote, i);
-  }
+        inserirNoFinalComCabecote(inicioListaComCabecote, i);
+    }
 
 	listarElementos(inicioListaSemCabecote);
-  listarElementos(inicioListaComCabecote->prox);
+    listarElementos(inicioListaComCabecote->prox);
 
 	liberarLista(inicioListaSemCabecote);
 	liberarLista(inicioListaComCabecote);
