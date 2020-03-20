@@ -251,11 +251,12 @@ void getDadosListaEncadeadaComCabecote(No* inicio, int vetorAux[]){
 
 /*
 Objetivo: Destruir a lista encadeada com cabeçote a partir de início.
+O ponteiro inicio deve ficar com NULL.
 
 Retorno 
     void.
 */
-void destruirListaEncadeadaComCabecote(No* inicio){
+void destruirListaEncadeadaComCabecote(No** inicio){
    
 
 }
