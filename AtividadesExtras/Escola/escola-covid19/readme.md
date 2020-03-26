@@ -10,7 +10,11 @@ http://ads.ifba.edu.br
 Prof. Renato Novais
 
 @2020
-
+ ### Orientações para compilar e executar
+#### Compilar
+> gcc Escola.c Aluno.c Utils.c -o Escola
+#### Executar
+> ./Escola
 
  ### Implementações realizadas
 	[ x ] Divisão dos módulos
