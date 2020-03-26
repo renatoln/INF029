@@ -1,6 +1,4 @@
 
-#include "Utils.h"
-
 /*Criando a struct aluno */
 typedef struct dados_aluno
 {
@@ -13,5 +11,7 @@ typedef struct dados_aluno
     
 } Aluno;
 
+void mainAluno(Aluno** inicio);
 int menuAluno();
 int inserirAluno(Aluno** inicio);
+void listarAlunos(Aluno** inicio);

@@ -1,16 +1,49 @@
+/**
+Projeto Escola: Sistema de controle de uma escola.
+
+Desenvolvimento em C
+
+Realizado no contexto da disciplina INF029 - Laboratório de Programação
+do curso de Análise e Desenvolvimento de Sistemas do Instituto Federal da Bahia, campus Salvador
+http://ads.ifba.edu.br
+
+Prof. Renato Novais
+
+@2020
+
+*/
+
 #include <stdio.h>
+
+#include "Escola.h"
 #include "Aluno.h"
+
+int menuGeral(){
+
+	int opcao;
+
+	printf("#### Digite a opção: ####\n");
+	printf("0 - Sair\n");
+	printf("1 - Gerenciar Aluno\n");
+	printf("2 - Gerenciar Professor\n");
+	printf("3 - Gerenciar Disciplina\n");
+
+	scanf("%d",&opcao);
+
+	return opcao;
+
+}
 
 int main(){
 	Aluno aluno; /*Criando a variável aluno que será do tipo struct Ficha_Aluno */
-	Aluno* inicioLista = NULL; // inicio da lista de alunos
+	Aluno* inicioListaAluno = NULL; // inicio da lista de alunos
 
-	int opcao;
+	int opcao, retorno;
 	int sair = 0;
 
 	while (!sair){
     
-	    opcao = menuAluno();
+	    opcao = menuGeral();
 	    
 	    switch(opcao){
 	      case 0:{
@@ -19,8 +52,7 @@ int main(){
 	        break;
 	      }
 	      case 1: {
-	      	retorno = inserirAluno(&inicioLista);
-	           
+	      	mainAluno(&inicioListaAluno);
 	      	break;
 	      }
 	      case 2: {

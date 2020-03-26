@@ -1,21 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
+#include "Escola.h"
 #include "Aluno.h"
-#include "Utils.h"
+
 
 
 int menuAluno(){
 
 	int opcao;
 
+	printf("#### Módulo de Aluno ####\n");
 	printf("#### Digite a opção: ####\n");
-	printf("0 - Sair\n");
+	printf("0 - Voltar para o menu geral\n");
 	printf("1 - Inserir Aluno\n");
 	printf("2 - Listar Alunos\n");
 	scanf("%d",&opcao);
 
 	return opcao;
+
+}
+
+
+void mainAluno(Aluno** inicioListaAluno){
+	int opcao, retorno;
+	int sair = 0;
+
+	while (!sair){
+    
+	    opcao = menuAluno();
+	    
+	    switch(opcao){
+	      case 0:{
+	        sair = 1;
+	        break;
+	      }
+	      case 1: {
+	      	retorno = inserirAluno(inicioListaAluno);
+	           
+	      	break;
+	      }
+	      case 2: {
+	      	listarAlunos(inicioListaAluno);
+	      	break;
+	      }default:{
+	      	printf("opcao inválida\n");
+	      }
+	  	}
+	}
+
 
 }
 
@@ -71,26 +106,16 @@ int inserirAluno(Aluno** inicio){
 	    if (novoAluno->sexo != 'M' && novoAluno->sexo != 'F') {
 	        retorno = ERRO_CADASTRO_SEXO;
 	    }else{
-	    	/* obs. a data nascimento será recuperada separadamente o dia, mês e ano, 
-	        mas depois tem que mudar para informar uma string dd/mm/aaaa, e validar a data*/
-	    
 		    char data[11];
 		    printf("Digite a data de nascimento: ");
-		    scanf("%s", data);
-		    
-		    int retorno = validar_data(data);
+		    scanf("%s", novoAluno->data_nascimento.dataCompleta);
+		    getchar();
+
+		    int retorno = validar_data(novoAluno->data_nascimento.dataCompleta);
 		    if (retorno == 0){
 		        retorno = ERRO_DATA_INVALIDA;
 		    }else{
-		    	printf("Digite o mês de nascimento: ");
-			    scanf("%d", &novoAluno->data_nascimento.mes);
-
-			    printf("Digite o ano de nascimento: ");
-			    scanf("%d", &novoAluno->data_nascimento.ano);
 			    
-			    
-			    getchar();
-
 			    printf("Digite o CPF: ");
 			    fgets(novoAluno->cpf, 15, stdin); 
 			    ln = strlen(novoAluno->cpf) - 1; 
@@ -114,3 +139,30 @@ int inserirAluno(Aluno** inicio){
     }
     
 }
+
+void listarAlunos(Aluno** inicio){
+    printf("\n### Alunos Cadastrasdos ####\n");
+    int i;
+    Aluno* alunoAtual = *inicio;
+    if (*inicio == NULL){
+        printf("Lista Vazia\n");
+        
+    }else{
+    
+        do{
+            printf("-----\n");
+            printf("Matrícula: %d\n", alunoAtual->matricula);
+            printf("Nome: %s\n", alunoAtual->nome);
+            printf("Sexo: %c\n", alunoAtual->sexo);
+            printf("Data Nascimento: %s\n", alunoAtual->data_nascimento.dataCompleta);
+            //printf("Data Nascimento: %d/%d/%d\n", alunoAtual->data_nascimento.dia, alunoAtual->data_nascimento.mes, alunoAtual->data_nascimento.ano);
+            printf("CPF: %s\n", alunoAtual->cpf);
+            
+            alunoAtual = alunoAtual->prox;
+
+        }while (alunoAtual != NULL);
+    }    
+    printf("-----\n\n");
+}
+
+
