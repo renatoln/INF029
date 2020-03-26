@@ -13,9 +13,9 @@ Prof. Renato Novais
 
 
  ### Implementações realizadas
-	[ x ] Divisão dos módulso
+	[ x ] Divisão dos módulos
 	[ x ] Inserir aluno
-	[ x ] listar alunos
+	[ x ] Listar alunos
 
  ### To Do
  	## Módulo aluno
@@ -27,4 +27,5 @@ Prof. Renato Novais
  	[  ] inserir professor
  	[  ] listar professor
  	[  ] excluir professor
+	[  ] fazer o free da lista de professores ao fechar a aplicação
 
