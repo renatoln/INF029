@@ -17,9 +17,12 @@ Prof. Renato Novais
 > ./Escola
 
  ### Implementações realizadas (Versão v1)
+ #### Versão V1
 	[ x ] Divisão dos módulos
 	[ x ] Inserir aluno
 	[ x ] Listar alunos
+> Link para o código desta versão: https://github.com/renatoln/INF029/tree/master/AtividadesExtras/Escola/sys-escola/v1
+> Link para o vídeo desta versão: https://youtu.be/EZtssTGwOyI
 
  ### To Do
  	## Módulo aluno
