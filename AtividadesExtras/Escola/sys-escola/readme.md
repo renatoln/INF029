@@ -16,7 +16,7 @@ Prof. Renato Novais
 #### Executar
 > ./Escola
 
- ### Implementações realizadas
+ ### Implementações realizadas (Versão v1)
 	[ x ] Divisão dos módulos
 	[ x ] Inserir aluno
 	[ x ] Listar alunos
@@ -32,4 +32,3 @@ Prof. Renato Novais
  	[  ] listar professor
  	[  ] excluir professor
 	[  ] fazer o free da lista de professores ao fechar a aplicação
-
