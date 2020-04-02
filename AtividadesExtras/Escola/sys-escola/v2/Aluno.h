@@ -12,11 +12,6 @@ typedef struct dados_aluno
 } Aluno;
 
 void mainAluno(Aluno** inicio);
-int menuAluno();
-int inserirAluno(Aluno** inicio);
-void listarAlunos(Aluno** inicio);
 void liberarLista(Aluno* inicio); //v2
-//v2
-int valida_numeros(int iDia, int iMes, int iAno);
-int verifica_ano_bisexto(int iAno);
-int verifica_numero(char CARACTER);
+
+

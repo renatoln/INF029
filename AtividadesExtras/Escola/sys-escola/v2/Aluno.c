@@ -6,7 +6,10 @@
 #include "Escola.h"
 #include "Aluno.h"
 
-
+int inserirAluno(Aluno** inicio);
+int excluirAluno(Aluno** inicio);
+void listarAlunos(Aluno** inicio);
+int menuAluno();
 
 int menuAluno(){
 
@@ -16,7 +19,8 @@ int menuAluno(){
 	printf("#### Digite a opção: ####\n");
 	printf("0 - Voltar para o menu geral\n");
 	printf("1 - Inserir Aluno\n");
-	printf("2 - Listar Alunos\n");
+	printf("2 - Excluir Aluno\n");
+	printf("3 - Listar Alunos\n");
 	scanf("%d",&opcao);
 
 	return opcao;
@@ -64,8 +68,30 @@ void mainAluno(Aluno** inicioListaAluno){
 	      	break;
 	      }
 	      case 2: {
-	      	listarAlunos(inicioListaAluno);
+	      	retorno = excluirAluno(inicioListaAluno);
+	      	//v2 - adicao do controle de retorno da funcao
+	      	if (retorno == SUCESSO_EXCLUSAO){ 
+	      		printf("Aluno excluido com sucesso\n");
+	      	}else{
+	      		switch(retorno){
+	      			case LISTA_VAZIA:{
+	      				printf("Lista Vazia.\n");
+	      				break;
+	      			}
+	      			case NAO_ENCONTRADO:{
+	      				printf("Não foi encontrado o aluno com o CPF digitado.\n");
+	      				break;
+	      			}
+	      			default:{
+	      				printf("Erro desconhecido.\n");
+	      			}
+	      		}
+	      	}  
 	      	break;
+	      }
+	      case 3: {
+	      	listarAlunos(inicioListaAluno);
+	      	break;	
 	      }default:{
 	      	printf("opcao inválida\n");
 	      }
@@ -74,7 +100,6 @@ void mainAluno(Aluno** inicioListaAluno){
 
 
 }
-
 
 void inserirAlunoNaLista(Aluno** inicio, Aluno* novoAluno){
     Aluno *atual;
@@ -88,12 +113,9 @@ void inserirAlunoNaLista(Aluno** inicio, Aluno* novoAluno){
             atual = atual->prox;
         
         atual->prox = novoAluno;
-        
     }
     
     novoAluno->prox = NULL;
-    
-    
 }
 
 int inserirAluno(Aluno** inicio){
@@ -103,8 +125,7 @@ int inserirAluno(Aluno** inicio){
     Aluno* novoAluno = (Aluno *)malloc(sizeof(Aluno));
     
     printf("\n### Cadastro de Aluno ###\n");
-    printf("Digite a matrícula: ");
-    //scanf("%d", &lista_aluno[qtd_alunos].matricula);
+    printf("Digite a matrícula: ");    
     scanf("%d", &novoAluno->matricula);
     getchar();
     
@@ -132,8 +153,8 @@ int inserirAluno(Aluno** inicio){
 		    scanf("%s", novoAluno->data_nascimento.dataCompleta);
 		    getchar();
 
-		    int retorno = validar_data(novoAluno->data_nascimento.dataCompleta);
-		    if (retorno == 0){
+		    int dataValida = validar_data(novoAluno->data_nascimento.dataCompleta);
+		    if (dataValida == 0){
 		        retorno = ERRO_DATA_INVALIDA;
 		    }else{
 			    
@@ -142,8 +163,6 @@ int inserirAluno(Aluno** inicio){
 			    ln = strlen(novoAluno->cpf) - 1; 
 			    if (novoAluno->cpf[ln] == '\n')
 			        novoAluno->cpf[ln] = '\0';
-
-			    printf("\n");
 		    }
 
 	    }
@@ -162,15 +181,57 @@ int inserirAluno(Aluno** inicio){
     
 }
 
+//v2
+int excluirAlunoNaLista(Aluno** inicio, int matricula){
+	if (*inicio == NULL)
+		return LISTA_VAZIA; // lista vazia
+	
+	Aluno* anterior = *inicio;
+	Aluno* atual = *inicio;
+	Aluno* proximo = atual->prox;
+	int achou = 0;
+
+	while(atual != NULL){
+		if (atual->matricula == matricula){
+			achou = 1;
+			break;
+		}
+		anterior = atual;
+		atual = proximo;
+		proximo = atual->prox;
+
+	}
+	if (achou){
+		if (atual == *inicio)
+			*inicio = proximo;
+		else
+			anterior->prox = atual->prox;
+		free(atual);
+		return SUCESSO_EXCLUSAO;
+	}else
+		return NAO_ENCONTRADO;
+
+}
+//v2
+int excluirAluno(Aluno** inicio){
+	int matricula;
+	printf("Digite a matrícula: ");    
+    scanf("%d", &matricula);
+    getchar();
+
+	return excluirAlunoNaLista(inicio, matricula);
+	
+}
+
+
 void listarAlunos(Aluno** inicio){
-    printf("\n### Alunos Cadastrasdos ####\n");
     int i;
     Aluno* alunoAtual = *inicio;
     if (*inicio == NULL){
         printf("Lista Vazia\n");
         
     }else{
-    
+    	printf("\n### Alunos Cadastrados ####\n");
         do{
             printf("-----\n");
             printf("Matrícula: %d\n", alunoAtual->matricula);
@@ -188,7 +249,6 @@ void listarAlunos(Aluno** inicio){
 }
 
 //v2 - Liberação da lista de aluno
-
 void liberarLista(Aluno* inicio){
 
 	Aluno* atual = inicio;
