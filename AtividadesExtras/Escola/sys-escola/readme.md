@@ -16,7 +16,7 @@ Prof. Renato Novais
 #### Executar
 > ./Escola
 
- ### Implementações realizadas (Versão v1)
+ ### Implementações realizadas
  #### Versão V1
 	[ x ] Divisão dos módulos
 	[ x ] Inserir aluno
@@ -24,12 +24,15 @@ Prof. Renato Novais
 > Link para o código desta versão: https://github.com/renatoln/INF029/tree/master/AtividadesExtras/Escola/sys-escola/v1
 > Link para o vídeo desta versão: https://youtu.be/EZtssTGwOyI
 
- ### To Do
- 	## Módulo aluno
- 	[  ] fazer o free da lista de alunos ao fechar a aplicação
- 	[  ] validar a data de nascimento
- 	[  ] excluir um aluno
+ #### Versão V2
+	[ x ] Melhoria nas mensagens de interação com o usuário
+	[ x ] Validação de data
+	[ x ] Free na Listar de alunos
+	[ x ] Excluir um aluno por matrícula
+> Link para o código desta versão: https://github.com/renatoln/INF029/tree/master/AtividadesExtras/Escola/sys-escola/v2
+> Link para o vídeo desta versão: AINDA NÃO DISPONÍVEL
 
+ ### To Do
  	## Módulo professor
  	[  ] inserir professor
  	[  ] listar professor
