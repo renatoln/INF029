@@ -32,6 +32,14 @@ Prof. Renato Novais
 > Link para o código desta versão: https://github.com/renatoln/INF029/tree/master/AtividadesExtras/Escola/sys-escola/v2
 > Link para o vídeo desta versão: https://youtu.be/0F9j3tDUYGo
 
+#### Versão V3
+	[ x ] Geração automática de matrículas
+	[  ] XXXXX
+	[  ] XXXXX
+	[  ] XXXXX
+> Link para o código desta versão: https://github.com/renatoln/INF029/tree/master/AtividadesExtras/Escola/sys-escola/v3
+> Link para o vídeo desta versão: AINDA NÃO DISPONÍVEL
+
  ### To Do
  	## Módulo aluno
 	[  ] Validar CPF
