@@ -30,7 +30,7 @@ Prof. Renato Novais
 	[ x ] Free na Listar de alunos
 	[ x ] Excluir um aluno por matrícula
 > Link para o código desta versão: https://github.com/renatoln/INF029/tree/master/AtividadesExtras/Escola/sys-escola/v2
-> Link para o vídeo desta versão: AINDA NÃO DISPONÍVEL
+> Link para o vídeo desta versão: https://youtu.be/0F9j3tDUYGo
 
  ### To Do
  	## Módulo professor
