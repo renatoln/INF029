@@ -12,6 +12,6 @@ typedef struct dados_aluno
 } Aluno;
 
 void mainAluno(Aluno** inicio);
-void liberarLista(Aluno* inicio); //v2
+void liberarListaAluno(Aluno* inicio); //v2
 
 

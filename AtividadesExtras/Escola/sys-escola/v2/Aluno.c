@@ -79,7 +79,7 @@ void mainAluno(Aluno** inicioListaAluno){
 	      				break;
 	      			}
 	      			case NAO_ENCONTRADO:{
-	      				printf("Não foi encontrado o aluno com o CPF digitado.\n");
+	      				printf("Não foi encontrado o aluno com a matrícula digitada.\n");
 	      				break;
 	      			}
 	      			default:{
@@ -185,7 +185,7 @@ int inserirAluno(Aluno** inicio){
 int excluirAlunoNaLista(Aluno** inicio, int matricula){
 	if (*inicio == NULL)
 		return LISTA_VAZIA; // lista vazia
-	
+
 	Aluno* anterior = *inicio;
 	Aluno* atual = *inicio;
 	Aluno* proximo = atual->prox;
@@ -198,9 +198,10 @@ int excluirAlunoNaLista(Aluno** inicio, int matricula){
 		}
 		anterior = atual;
 		atual = proximo;
-		proximo = atual->prox;
-
+		if (atual != NULL)
+			proximo = atual->prox;
 	}
+
 	if (achou){
 		if (atual == *inicio)
 			*inicio = proximo;
@@ -249,7 +250,7 @@ void listarAlunos(Aluno** inicio){
 }
 
 //v2 - Liberação da lista de aluno
-void liberarLista(Aluno* inicio){
+void liberarListaAluno(Aluno* inicio){
 
 	Aluno* atual = inicio;
 	Aluno* tmp;

@@ -36,7 +36,7 @@ int menuGeral(){
 
 //v2
 void finalizarEscola(Aluno* inicio){
-	liberarLista(inicio);
+	liberarListaAluno(inicio);
 }
 
 int main(){
