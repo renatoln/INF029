@@ -33,6 +33,10 @@ Prof. Renato Novais
 > Link para o vídeo desta versão: https://youtu.be/0F9j3tDUYGo
 
  ### To Do
+ 	## Módulo aluno
+	[  ] Validar CPF
+ 	[  ] Controle de matríla repetida repetida
+	
  	## Módulo professor
  	[  ] inserir professor
  	[  ] listar professor
