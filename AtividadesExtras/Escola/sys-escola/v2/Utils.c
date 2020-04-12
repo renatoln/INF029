@@ -107,7 +107,10 @@ int valida_numeros(int iDia, int iMes, int iAno)
     else if(iDia> 28 && iMes == 2 && bissexto == 0)
         return 0;
     
-    else if (iAno <= 0)
+    else if (iAno <= 0 )
+        return 0;
+      
+    else if (iAno >= 10000)
         return 0;
     
   return 1;  
@@ -127,4 +130,3 @@ int verifica_numero(char CARACTER)
     
     return 1;
 }
-
