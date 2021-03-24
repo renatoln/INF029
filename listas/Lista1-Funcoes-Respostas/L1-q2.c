@@ -13,6 +13,7 @@ int main()
     resultado = subtrai(a, b, c);
 
     printf("A subtração  entre %d, %d e %d eh %d\n", a, b, c, resultado);
+    return 1;
 }
 
 int subtrai(int x, int y, int k)
