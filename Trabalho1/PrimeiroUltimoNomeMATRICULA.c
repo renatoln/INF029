@@ -34,10 +34,11 @@
 @saida
     resultado da soma (x + y)
  */
-int somar(int x, int y){
-  int soma = 0;
-  soma = x + y;
-  return soma;
+int somar(int x, int y)
+{
+    int soma = 0;
+    soma = x + y;
+    return soma;
 }
 
 /*
@@ -51,9 +52,10 @@ int somar(int x, int y){
 @saida
     fatorial de x -> x!
  */
-int fatorial(int x){ //função utilizada para testes
-  int fat = 1;
-  return fat;
+int fatorial(int x)
+{ //função utilizada para testes
+    int fat = 1;
+    return fat;
 }
 
 /*
@@ -65,18 +67,26 @@ int fatorial(int x){ //função utilizada para testes
 @saida
     0 -> se data inválida
     1 -> se data válida
+ @restrições
+    Não utilizar funções próprias de string (ex: strtok)   
+    pode utilizar strlen para pegar o tamanho da string
  */
-int q1(char *data){
+int q1(char *data)
+{
     int datavalida = 1;
 
-    //printf("%s\n", data);
+    //quebrar a string data em strings sDia, sMes, sAno
 
+    //converter sDia, sMes e sAno em inteiros (ex: atoi)
+
+    //criar as variáveis iDia, iMes, iAno
+
+    //printf("%s\n", data);
 
     if (datavalida)
         return 1;
     else
         return 0;
-
 }
 
 /*
@@ -91,11 +101,11 @@ int q1(char *data){
     3 -> datafinal inválida
     4 -> datainicial > datafinal
  */
-int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos){
-    
+int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
+{
+
     //calcule os dados e armazene nas três variáveis a seguir
     int nDias, nMeses, nAnos;
-
 
     if (q1(datainicial) == 0)
         return 2;
@@ -103,9 +113,6 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
     nDias = 4;
     nMeses = 10;
     nAnos = 2;
-
-
-
 
     /*mantenha o código abaixo, para salvar os dados em 
     nos parâmetros da funcao
@@ -116,9 +123,7 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
 
     //coloque o retorno correto
     return 1;
-
 }
-
 
 /*
  Q3 = encontrar caracter em texto
@@ -130,11 +135,11 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
  @saida
     Um número n >= 0.
  */
-int q3(char *texto, char c, int isCaseSensitive){
+int q3(char *texto, char c, int isCaseSensitive)
+{
     int qtdOcorrencias = -1;
 
     return qtdOcorrencias;
-
 }
 
 /*
@@ -152,11 +157,11 @@ int q3(char *texto, char c, int isCaseSensitive){
         O retorno da função, n, nesse caso seria 1;
 
  */
-int q4(char *strTexto, char *strBusca, int posicoes[30]){
+int q4(char *strTexto, char *strBusca, int posicoes[30])
+{
     int qtdOcorrencias = -1;
 
     return qtdOcorrencias;
-
 }
 
 /*
@@ -169,7 +174,8 @@ int q4(char *strTexto, char *strBusca, int posicoes[30]){
     Número invertido
  */
 
-int q5(int num){
+int q5(int num)
+{
 
     return num;
 }
@@ -184,7 +190,8 @@ int q5(int num){
     Quantidade de vezes que número de busca ocorre em número base
  */
 
-int q6(int numerobase, int numerobusca){
+int q6(int numerobase, int numerobusca)
+{
     int qtdOcorrencias;
     return qtdOcorrencias;
 }
