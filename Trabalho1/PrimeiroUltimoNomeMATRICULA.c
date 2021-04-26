@@ -58,6 +58,19 @@ int fatorial(int x)
     return fat;
 }
 
+/*typedef struct DQ
+{
+    char sDia [3];
+    char sMes [3];
+    char sAno [3];
+    int valido; // 0 se inválido, e 1 se válido 
+
+} DataQuebrada;
+
+DataQuebrada quebraData(char *data){
+    //[ e , r  ,  /  ,    ,   ,  /  ,    ,     ,    ,      ,]
+
+}*/
 /*
  Q1 = validar data
 @objetivo
@@ -77,9 +90,13 @@ int q1(char *data)
 
     //quebrar a string data em strings sDia, sMes, sAno
 
+    //DataQuebrada dataQuebrada = quebraData(data);
+    //if (dataQuebrada.valido == 0) return 0;
+
     //converter sDia, sMes e sAno em inteiros (ex: atoi)
 
     //criar as variáveis iDia, iMes, iAno
+    //int iAno = atoi(dataQuebrada.sDia);
 
     //printf("%s\n", data);
 
@@ -181,7 +198,7 @@ int q5(int num)
 }
 
 /*
- Q5 = ocorrência de um número em outro
+ Q6 = ocorrência de um número em outro
  @objetivo
     Verificar quantidade de vezes da ocorrência de um número em outro
  @entrada
