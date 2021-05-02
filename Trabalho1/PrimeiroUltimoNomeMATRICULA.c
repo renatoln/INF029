@@ -58,6 +58,17 @@ int fatorial(int x)
     return fat;
 }
 
+int teste(int a)
+{
+    int val;
+    if (a == 2)
+        val = 3;
+    else
+        val = 4;
+
+    return val;
+}
+
 /*typedef struct DQ
 {
     char sDia [3];
@@ -68,7 +79,7 @@ int fatorial(int x)
 } DataQuebrada;
 
 DataQuebrada quebraData(char *data){
-    //[ e , r  ,  /  ,    ,   ,  /  ,    ,     ,    ,      ,]
+    //[ 1 , 2  ,  /  ,    ,   ,  /  ,    ,     ,    ,      ,]
 
 }*/
 /*
@@ -96,7 +107,7 @@ int q1(char *data)
     //converter sDia, sMes e sAno em inteiros (ex: atoi)
 
     //criar as variáveis iDia, iMes, iAno
-    //int iAno = atoi(dataQuebrada.sDia);
+    int iAno = atoi(dataQuebrada.sAno);
 
     //printf("%s\n", data);
 
