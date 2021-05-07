@@ -10,25 +10,25 @@
 #define NOVO_TAMANHO_INVALIDO -10
 #define TODAS_ESTRUTURAS_AUXILIARES_VAZIAS -11
 
-typedef struct reg {
-	int conteudo;
+typedef struct reg
+{
+  int conteudo;
   struct reg *prox;
 } No;
 
-
-int criarEstruturaAuxiliar(int tamanho, int posicao);
-int inserirNumeroEmEstrutura(int valor, int posicao);
+int criarEstruturaAuxiliar(int posicao, int tamanho);
+int inserirNumeroEmEstrutura(int posicao, int valor);
 int excluirNumeroDoFinaldaEstrutura(int posicao);
-int excluirNumeroEspecificoDeEstrutura(int valor, int posicao);
+int excluirNumeroEspecificoDeEstrutura(int posicao, int valor);
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]);
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[]);
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
 int getQuantidadeElementosEstruturaAuxiliar(int posicao);
-No* montarListaEncadeadaComCabecote();
-void getDadosListaEncadeadaComCabecote(No* inicio, int vetorAux[]);
-void destruirListaEncadeadaComCabecote(No** inicio);
+No *montarListaEncadeadaComCabecote();
+void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[]);
+void destruirListaEncadeadaComCabecote(No **inicio);
 
 void inicializar();
 void finalizar();
