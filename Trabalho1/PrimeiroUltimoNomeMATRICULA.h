@@ -17,9 +17,11 @@
 //  Semestre:
 
 //  Copyright © 2016 Renato Novais. All rights reserved.
-// Última atualização: 12/12/2017
+// Última atualização: 07/05/2021
 
 // #################################################
+#ifndef TRABALHO1_PRIMEIROULTIMONOMEMATRICULA_H
+#define TRABALHO1_PRIMEIROULTIMONOMEMATRICULA_H
 
 int somar(int x, int y); //função utilizada para testes
 int fatorial(int x); //função utilizada para testes
@@ -29,3 +31,5 @@ int q3(char *texto, char c, int isCaseSensitive);
 int q4(char *strTexto, char *strBusca, int posicoes[30]);
 int q5(int num);
 int q6(int numerobase, int numerobusca);
+
+#endif  // TRABALHO1_PRIMEIROULTIMONOMEMATRICULA_H

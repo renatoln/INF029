@@ -1,19 +1,17 @@
-#define SUCESSO -1
-#define SEM_ESPACO -2
-#define SEM_ESTRUTURA_AUXILIAR -3
-#define JA_TEM_ESTRUTURA_AUXILIAR -4
-#define POSICAO_INVALIDA -5
-#define SEM_ESPACO_DE_MEMORIA -6
-#define TAMANHO_INVALIDO -7
-#define ESTRUTURA_AUXILIAR_VAZIA -8
-#define NUMERO_INEXISTENTE -9
-#define NOVO_TAMANHO_INVALIDO -10
-#define TODAS_ESTRUTURAS_AUXILIARES_VAZIAS -11
+#ifndef TRABALHO2_ESTRUTURAVETORES_H
+#define TRABALHO2_ESTRUTURAVETORES_H
 
-typedef struct reg
-{
-  int conteudo;
-  struct reg *prox;
+// enumeracoes (enum) ajudam a deixar o codigo mais legivel, possibilitando que voce de significado
+// as suas constantes, para mais informacoes https://en.cppreference.com/w/c/language/enum
+// as constantes do enum em sua inicialização vao representar o numero resultante da soma do valor da
+// constante anterior mais 1, caso nao haja valor algum na primeira constante ela vai ser inicializada com 0
+enum { TODAS_ESTRUTURAS_AUXILIARES_VAZIAS = -11, NOVO_TAMANHO_INVALIDO, NUMERO_INEXISTENTE,
+       ESTRUTURA_AUXILIAR_VAZIA, TAMANHO_INVALIDO, SEM_ESPACO_DE_MEMORIA, POSICAO_INVALIDA,
+       JA_TEM_ESTRUTURA_AUXILIAR, SEM_ESTRUTURA_AUXILIAR, SEM_ESPACO, SUCESSO };
+
+typedef struct reg {
+    int conteudo;
+    struct reg *prox;
 } No;
 
 int criarEstruturaAuxiliar(int posicao, int tamanho);
@@ -33,3 +31,5 @@ void destruirListaEncadeadaComCabecote(No **inicio);
 void inicializar();
 void finalizar();
 void dobrar(int *x);
+
+#endif  // TRABALHO2_ESTRUTURAVETORES_H
