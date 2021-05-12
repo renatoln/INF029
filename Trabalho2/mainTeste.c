@@ -9,6 +9,7 @@ void testeInserirSemNada();
 void testeCriarEstrutura();
 void testeInserirComEstrutura();
 void testeExcluir();
+void testeExcluirNumeroEspecifico();
 void testeListar();
 void testeRetornarTodosNumeros();
 void testeMudarTamanhoEstrutura();
@@ -21,6 +22,7 @@ int main()
     testeCriarEstrutura();
     testeInserirComEstrutura();
     testeExcluir();
+    testeExcluirNumeroEspecifico();
     testeListar();
     testeRetornarTodosNumeros();
     testeMudarTamanhoEstrutura();
@@ -38,9 +40,9 @@ void testeInserirSemNada()
 {
     show_log("testeInserirSemNada()");
     printf("%d\n", inserirNumeroEmEstrutura(2, 2) == SEM_ESTRUTURA_AUXILIAR);
-    printf("%d\n", inserirNumeroEmEstrutura(-2, 2) == POSICAO_INVALIDA);
-    printf("%d\n", inserirNumeroEmEstrutura(0, 2) == POSICAO_INVALIDA);
-    printf("%d\n", inserirNumeroEmEstrutura(11, 2) == POSICAO_INVALIDA);
+    printf("%d\n", inserirNumeroEmEstrutura(2, -2) == POSICAO_INVALIDA);
+    printf("%d\n", inserirNumeroEmEstrutura(2, 0) == POSICAO_INVALIDA);
+    printf("%d\n", inserirNumeroEmEstrutura(2, 11) == POSICAO_INVALIDA);
 }
 
 void testeCriarEstrutura()
@@ -84,6 +86,19 @@ void testeExcluir()
 
 /*
 2 [ , , ]
+*/
+
+void testeExcluirNumeroEspecifico() {
+    printf("%d\n", criarEstruturaAuxiliar(9, 3) == SUCESSO);
+    printf("%d\n", inserirNumeroEmEstrutura(9, 7) == SUCESSO);
+    printf("%d\n", inserirNumeroEmEstrutura(9, 4) == SUCESSO);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 12) == NUMERO_INEXISTENTE);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 7) == SUCESSO);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(1, 2) == SEM_ESTRUTURA_AUXILIAR);
+}
+
+/*
+9 [ 4, , ] 
 */
 
 void testeListar()
@@ -198,7 +213,6 @@ void testeRetornarTodosNumeros()
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
 Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho' + tamanho atual
 Suponha o tamanho inicial = x, e novo tamanho = n. O tamanho resultante deve ser x + n. Sendo que x + n deve ser sempre >= 1
-
 Rertono (int)
     SUCESSO - foi modificado corretamente o tamanho da estrutura auxiliar
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
@@ -261,3 +275,4 @@ void testeListaEncadeada()
 
     printf("%d\n", inicio == NULL);
 }
+© 2021 GitHub, Inc.
