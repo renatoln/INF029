@@ -6,11 +6,6 @@
 
 int vetorPrincipal[TAM];
 
-void dobrar(int *x)
-{
-
-    *x = *x * 2;
-}
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
 com tamanho 'tamanho'
@@ -20,7 +15,7 @@ Rertono (int)
     JA_TEM_ESTRUTURA_AUXILIAR - já tem estrutura na posição
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
     SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
-    TAMANHO_INVALIDO - o tamanho tem inteiro maior ou igual a 1
+    TAMANHO_INVALIDO - o tamanho deve ser maior ou igual a 1
 */
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
@@ -49,7 +44,7 @@ Rertono (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 CONSTANTES
 */
-int inserirNumeroEmEstrutura(int posicao, int valor)
+int inserirNumeroEstrutura(int posicao, int valor)
 {
 
     int retorno = 0;
