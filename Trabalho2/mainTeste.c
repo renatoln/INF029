@@ -3,6 +3,8 @@
 
 #include "EstruturaVetores.h"
 
+int const habilitaLog = 1;
+
 void show_log(char *str);
 
 void testeInserirSemNada();
@@ -29,11 +31,11 @@ int main()
     testeListaEncadeada();
     finalizar();
 }
-int ligado = 0;
 void show_log(char *str)
 {
-    if (ligado)
-        printf("###%s###\n", str);
+    if (habilitaLog) {
+        printf("### %s ###\n", str);
+    }
 }
 
 void testeInserirSemNada()
