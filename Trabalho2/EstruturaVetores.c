@@ -141,7 +141,7 @@ Retorno (int)
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
-int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
+int getDadosEstruturaAuxiliar(int posicao, int vetorAux[], int tamArray)
 {
 
     int retorno = 0;
@@ -158,7 +158,7 @@ Rertono (int)
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
-int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
+int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[], int tamArray)
 {
 
     int retorno = 0;
@@ -174,7 +174,7 @@ Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
 */
-int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
+int getDadosDeTodasEstruturasAuxiliares(int vetorAux[], int tamArray)
 {
 
     int retorno = 0;
@@ -189,7 +189,7 @@ Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
 */
-int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
+int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[], int tamArray)
 {
 
     int retorno = 0;
@@ -248,7 +248,7 @@ No *montarListaEncadeadaComCabecote()
 Objetivo: retorna os números da lista enceada com cabeçote armazenando em vetorAux.
 Retorno void
 */
-void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[])
+void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[], int tamArray)
 {
 }
 
