@@ -133,6 +133,7 @@ void testeListar()
 
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(9) == SUCESSO);
 }
 
 /*
