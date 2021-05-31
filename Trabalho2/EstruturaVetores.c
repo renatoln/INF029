@@ -167,7 +167,7 @@ os números devem ser armazenados em vetorAux
 
 Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
-    SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
+    TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - todas as estruturas auxiliares estão vazias
 */
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
@@ -182,7 +182,7 @@ os números devem ser armazenados em vetorAux
 
 Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
-    SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
+    TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - todas as estruturas auxiliares estão vazias
 */
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
