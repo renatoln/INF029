@@ -7,7 +7,6 @@ typedef struct dados_aluno
     char sexo; //M - Masculino, F - Feminino
     Data data_nascimento;
     char cpf[15];
-    struct dados_aluno *prox;
 
 } Aluno;
 

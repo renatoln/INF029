@@ -41,7 +41,7 @@ int main(void)
     }
     case 1:
     {
-      mainAluno(lista_aluno, qtd_alunos);
+      qtd_alunos = mainAluno(lista_aluno, qtd_alunos);
       break;
     }
     case 2:
