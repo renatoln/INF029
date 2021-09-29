@@ -41,52 +41,17 @@ int main(void)
     }
     case 1:
     {
-      retorno = inserirAluno(lista_aluno, qtd_alunos);
-      if (retorno == SUCESSO_CADASTRO)
-      {
-        printf("Cadastro realizado com sucesso\n");
-        qtd_alunos++;
-      }
-      else
-      {
-        switch (retorno)
-        {
-        case ERRO_CADASTRO_MATRICULA:
-        {
-          printf("Matrícula Inválida");
-          break;
-        }
-        case ERRO_CADASTRO_SEXO:
-        {
-          printf("Sexo Inválido");
-          break;
-        }
-        default:
-        {
-          printf("Erro desconhecido!");
-        }
-        }
-        printf("Não foi possível fazer o cadastro\n");
-      }
+      mainAluno(lista_aluno, qtd_alunos);
       break;
     }
     case 2:
     {
-      listarAlunos(lista_aluno, qtd_alunos);
+      //mainProfessor();
       break;
     }
     case 3:
     {
-      int retorno = excluirAlunoDoFinal(qtd_alunos);
-      if (retorno == ERRO_EXCLUSAO_ALUNO)
-      {
-        printf("Erro ao excluir aluno\n");
-      }
-      else
-      {
-        printf("Aluno excluido com sucesso\n");
-        qtd_alunos--;
-      }
+      //mainDisciplina();
       break;
     }
     default:
@@ -104,9 +69,9 @@ int opcaoMenuPrincipal()
   int opcao;
   printf("Digite a opção:\n");
   printf("0 - Sair\n");
-  printf("1 - Inserir Aluno\n");
-  printf("2 - Listar Alunos\n");
-  printf("3 - Excluir útlimo aluno cadastrado\n");
+  printf("1 - Aluno\n");
+  printf("2 - Professor\n");
+  printf("3 - Disciplina\n");
 
   scanf("%d", &opcao);
   return opcao;

@@ -11,7 +11,5 @@ typedef struct dados_aluno
 
 } Aluno;
 
-int inserirAluno(Aluno lista_aluno[], int qtd_alunos);
-void listarAlunos(Aluno lista_aluno[], int qtd_alunos);
 
-int excluirAlunoDoFinal(int qtd_alunos);
+int mainAluno(Aluno lista_aluno[], int qtd_alunos);

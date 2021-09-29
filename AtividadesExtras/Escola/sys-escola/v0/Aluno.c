@@ -6,6 +6,93 @@
 #include "Escola.h"
 #include "Aluno.h"
 
+int opcaoMenuAluno();
+int inserirAluno(Aluno lista_aluno[], int qtd_alunos);
+void listarAlunos(Aluno lista_aluno[], int qtd_alunos);
+int excluirAlunoDoFinal(int qtd_alunos);
+
+int mainAluno(Aluno lista_aluno[], int qtd_alunos)
+{
+
+  Aluno aluno;
+
+  int opcao, retorno;
+  int sair = 0;
+
+  while (!sair)
+  {
+
+    opcao = opcaoMenuAluno();
+
+    switch (opcao)
+    {
+    case 0:
+    {
+      sair = 1;
+      break;
+    }
+    case 1:
+    {
+      retorno = inserirAluno(lista_aluno, qtd_alunos);
+      if (retorno == SUCESSO_CADASTRO)
+      {
+        printf("Cadastro realizado com sucesso\n");
+        qtd_alunos++;
+      }
+      else
+      {
+        switch (retorno)
+        {
+        case ERRO_CADASTRO_MATRICULA:
+        {
+          printf("Matrícula Inválida");
+          break;
+        }
+        case ERRO_CADASTRO_SEXO:
+        {
+          printf("Sexo Inválido");
+          break;
+        }
+        default:
+        {
+          printf("Erro desconhecido!");
+        }
+        }
+        printf("Não foi possível fazer o cadastro\n");
+      }
+      break;
+    }
+    case 2:
+    {
+      listarAlunos(lista_aluno, qtd_alunos);
+      break;
+    }
+    case 3:
+    {
+      int retorno = excluirAlunoDoFinal(qtd_alunos);
+      if (retorno == ERRO_EXCLUSAO_ALUNO)
+      {
+        printf("Erro ao excluir aluno\n");
+      }
+      else
+      {
+        printf("Aluno excluido com sucesso\n");
+        qtd_alunos--;
+      }
+      break;
+    }
+    default:
+    {
+      printf("Opção Inválida\n");
+    }
+    }
+  }
+
+  return 1;
+}
+
+
+
 int inserirAluno(Aluno lista_aluno[], int qtd_alunos)
 {
 
@@ -82,3 +169,17 @@ int excluirAlunoDoFinal(int qtd_alunos){
         return SUCESSO_EXCLUSAO_ALUNO; 
 
 }
+
+int opcaoMenuAluno()
+{
+  int opcao;
+  printf("Digite a opção:\n");
+  printf("0 - Voltar\n");
+  printf("1 - Inserir Aluno\n");
+  printf("2 - Listar Alunos\n");
+  printf("3 - Excluir útlimo aluno cadastrado\n");
+
+  scanf("%d", &opcao);
+  return opcao;
+}
+
