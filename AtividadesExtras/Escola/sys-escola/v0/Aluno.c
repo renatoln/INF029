@@ -269,7 +269,7 @@ int atualizarAluno(Aluno lista_aluno[], int qtd_alunos){
 
         printf("Digite o sexo: ");
         scanf("%c", &novoAluno.sexo);
-
+i
         novoAluno.sexo = toupper(novoAluno.sexo);
         if (novoAluno.sexo != 'M' && novoAluno.sexo != 'F')
         {
