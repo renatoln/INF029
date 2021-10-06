@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 #include "PrimeiroUltimoNomeMATRICULA.h" // Substitua pelo seu arquivo de header renomeado
-
+#include <stdlib.h>
 /*
 ## função utilizada para testes  ##
 
@@ -37,7 +37,7 @@
  */
 int somar(int x, int y)
 {
-    int soma = 0;
+    int soma;
     soma = x + y;
     return soma;
 }
@@ -55,7 +55,7 @@ int somar(int x, int y)
  */
 int fatorial(int x)
 { //função utilizada para testes
-    int fat = 1;
+    int fat = 6;
     return fat;
 }
 
@@ -108,7 +108,7 @@ int q1(char *data)
     //converter sDia, sMes e sAno em inteiros (ex: atoi)
 
     //criar as variáveis iDia, iMes, iAno
-    int iAno = atoi(dataQuebrada.sAno);
+    //int iAno = atoi(dataQuebrada.sAno);
 
     //printf("%s\n", data);
 

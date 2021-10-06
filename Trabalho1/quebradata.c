@@ -29,6 +29,8 @@ int main(){
 }
 
 //quebrar a string data em strings sDia, sMes, sAno
+//retorna 1 se tiver tudo certo
+//retorna 0 se deu algum erro
 int quebraData(char *data){
 
 	char sDia[3];
@@ -47,6 +49,7 @@ int quebraData(char *data){
 
 	int j = i + 1; //anda 1 cada para pular a barra
 	i = 0;
+
 	for (; data[j] != '/'; j++){
 		sMes[i] = data[j];
 		i++;
