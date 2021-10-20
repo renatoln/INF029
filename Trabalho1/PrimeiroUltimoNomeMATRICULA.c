@@ -70,19 +70,66 @@ int teste(int a)
     return val;
 }
 
-/*typedef struct DQ
+typedef struct DQ
 {
-    char sDia [3];
-    char sMes [3];
-    char sAno [3];
+    int iDia;
+    int iMes;
+    int iAno;
     int valido; // 0 se inválido, e 1 se válido 
 
 } DataQuebrada;
 
-DataQuebrada quebraData(char *data){
-    //[ 1 , 2  ,  /  ,    ,   ,  /  ,    ,     ,    ,      ,]
+DataQuebrada quebraData(char data[]){
+    DataQuebrada dq;
+    char sDia[3];
+	char sMes[3];
+	char sAno[5];
+	int i;
 
-}*/
+	for (i = 0; data[i] != '/'; i++){
+		sDia[i] = data[i];	
+	}
+	if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
+		sDia[i] = '\0';  // coloca o barra zero no final
+	}else 
+		dq.valido = 0;
+	
+
+	int j = i + 1; //anda 1 cada para pular a barra
+	i = 0;
+
+	for (; data[j] != '/'; j++){
+		sMes[i] = data[j];
+		i++;
+	}
+
+	if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
+		sMes[i] = '\0';  // coloca o barra zero no final
+	}else
+		dq.valido = 0;
+	
+
+	j = j + 1; //anda 1 cada para pular a barra
+	i = 0;
+	
+	for(; data[j] != '\0'; j++){
+	 	sAno[i] = data[j];
+	 	i++;
+	}
+
+	if(i == 2 || i == 4){ // testa se tem 2 ou 4 digitos
+		sAno[i] = '\0';  // coloca o barra zero no final
+	}else
+		dq.valido = 0;
+
+    dq.iDia = atoi(sDia);
+    dq.iMes = atoi(sMes);
+    dq.iAno = atoi(sAno); 
+
+	dq.valido = 1;
+    
+    return dq;
+}
 /*
  Q1 = validar data
 @objetivo
@@ -118,6 +165,8 @@ int q1(char *data)
         return 0;
 }
 
+
+
 /*
  Q2 = diferença entre duas datas
  @objetivo
@@ -132,6 +181,9 @@ int q1(char *data)
  */
 int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
 {
+    //inicial 16/04/2002 16/04/2002 16/05/2002
+    //final   15/05/2002 16/05/2002 15/06/2002
+    //         29 dias   30 (1 mês)   30 dias
 
     //calcule os dados e armazene nas três variáveis a seguir
     int nDias, nMeses, nAnos;
@@ -139,11 +191,29 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
     if (q1(datainicial) == 0)
         return 2;
 
+    if (q1(datafinal) == 0)
+        return 3;
+
+    DataQuebrada dqInicial = dataQuebrada(datainicial);
+    DataQuebrada dqFim = dataQuebrada(datafinal);
+
+    if (dqInicial.iAno > dqFinal.iAno)
+        return 4;
+    else (dqInicial.iAno == dqFinal.iAno){
+        if (dqInicial.iMes > dqFinal.iMes)
+            return 4;
+        else if (dqInicial.iMes == dqFinal.iMes){
+            if (dqInicial.iDia > dqFinal.iDia)
+                return 4;
+        } 
+    }    
+
+
     nDias = 4;
     nMeses = 10;
     nAnos = 2;
 
-    /*mantenha o código abaixo, para salvar os dados em 
+    /*mantenha o código abaixo, para salvar os dados  
     nos parâmetros da funcao
     */
     *qtdDias = nDias;
