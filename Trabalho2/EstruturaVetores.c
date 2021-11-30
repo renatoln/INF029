@@ -46,7 +46,6 @@ CONSTANTES
 */
 int inserirNumeroEstrutura(int posicao, int valor)
 {
-
     int retorno = 0;
     int existeEstruturaAuxiliar = 0;
     int temEspaco = 0;
@@ -158,6 +157,7 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 
     int retorno = 0;
 
+    
     return retorno;
 }
 

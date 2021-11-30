@@ -19,14 +19,14 @@ int main()
 {
     inicializar();
     testeInserirSemNada();
-    testeCriarEstrutura();
+    /*testeCriarEstrutura();
     testeInserirComEstrutura();
     testeExcluir();
     testeExcluirNumeroEspecifico();
     testeListar();
     testeRetornarTodosNumeros();
     testeMudarTamanhoEstrutura();
-    testeListaEncadeada();
+    testeListaEncadeada();*/
     finalizar();
 }
 int ligado = 0;
@@ -97,6 +97,7 @@ void testeExcluirNumeroEspecifico()
     printf("%d\n", inserirNumeroEmEstrutura(9, 4) == SUCESSO);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 12) == NUMERO_INEXISTENTE);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 7) == SUCESSO);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 4) == SUCESSO);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(1, 2) == SEM_ESTRUTURA_AUXILIAR);
 }
 /*
