@@ -70,14 +70,7 @@ int teste(int a)
     return val;
 }
 
-typedef struct DQ
-{
-    int iDia;
-    int iMes;
-    int iAno;
-    int valido; // 0 se inválido, e 1 se válido 
 
-} DataQuebrada;
 
 DataQuebrada quebraData(char data[]){
     DataQuebrada dq;
@@ -143,7 +136,7 @@ DataQuebrada quebraData(char data[]){
     Não utilizar funções próprias de string (ex: strtok)   
     pode utilizar strlen para pegar o tamanho da string
  */
-int q1(char *data)
+int q1(char data[])
 {
     int datavalida = 1;
 
@@ -172,56 +165,39 @@ int q1(char *data)
  @objetivo
     Calcular a diferença em anos, meses e dias entre duas datas
  @entrada
-    uma string datainicial, uma string datafinal. Além disso, a função tem três parâmetros qtdDias, qtdMeses e qtdAnos. Esses três parâmetros devem ser utilizados para guardar os resultados dos cálculos. Na chamada da função deve passar o valor -1 para os três
+    uma string datainicial, uma string datafinal. 
  @saida
+    Retorna um tipo DiasMesesAnos. No atributo retorno, deve ter os possíveis valores abaixo
     1 -> cálculo de diferença realizado com sucesso
     2 -> datainicial inválida
     3 -> datafinal inválida
     4 -> datainicial > datafinal
+    Caso o cálculo esteja correto, os atributos qtdDias, qtdMeses e qtdAnos devem ser preenchidos com os valores correspondentes.
  */
-int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
+DiasMesesAnos q2(char datainicial[], char datafinal[])
 {
-    //inicial 16/04/2002 16/04/2002 16/05/2002
-    //final   15/05/2002 16/05/2002 15/06/2002
-    //         29 dias   30 (1 mês)   30 dias
 
     //calcule os dados e armazene nas três variáveis a seguir
-    int nDias, nMeses, nAnos;
+    DiasMesesAnos dma;
 
-    if (q1(datainicial) == 0)
-        return 2;
-
-    if (q1(datafinal) == 0)
-        return 3;
-
-    DataQuebrada dqInicial = dataQuebrada(datainicial);
-    DataQuebrada dqFim = dataQuebrada(datafinal);
-
-    if (dqInicial.iAno > dqFinal.iAno)
-        return 4;
-    else (dqInicial.iAno == dqFinal.iAno){
-        if (dqInicial.iMes > dqFinal.iMes)
-            return 4;
-        else if (dqInicial.iMes == dqFinal.iMes){
-            if (dqInicial.iDia > dqFinal.iDia)
-                return 4;
-        } 
-    }    
+    if (q1(datainicial) == 0){
+      dma.retorno = 2;
+      return dma;
+    }else if (q1(datafinal) == 0){
+      dma.retorno = 2;
+      return dma;
+    }else{
+      //verifique se a data final não é menor que a data inicial
+      
+      //calcule a distancia entre as datas
 
 
-    nDias = 4;
-    nMeses = 10;
-    nAnos = 2;
-
-    /*mantenha o código abaixo, para salvar os dados  
-    nos parâmetros da funcao
-    */
-    *qtdDias = nDias;
-    *qtdAnos = nAnos;
-    *qtdMeses = nMeses;
-
-    //coloque o retorno correto
-    return 1;
+      //se tudo der certo
+      dma.retorno = 1;
+      return dma;
+      
+    }
+    
 }
 
 /*
