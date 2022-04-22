@@ -55,8 +55,12 @@ int somar(int x, int y)
  */
 int fatorial(int x)
 { //função utilizada para testes
-    int fat = 6;
-    return fat;
+  int i, fat = 1;
+    
+  for (i = x; i > 1; i--)
+    fat = fat * i;
+    
+  return fat;
 }
 
 int teste(int a)
@@ -73,19 +77,21 @@ int teste(int a)
 
 
 DataQuebrada quebraData(char data[]){
-    DataQuebrada dq;
-    char sDia[3];
+  DataQuebrada dq;
+  char sDia[3];
 	char sMes[3];
 	char sAno[5];
-	int i;
+	int i; 
 
 	for (i = 0; data[i] != '/'; i++){
 		sDia[i] = data[i];	
 	}
 	if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
 		sDia[i] = '\0';  // coloca o barra zero no final
-	}else 
+	}else {
 		dq.valido = 0;
+    return dq;
+  }  
 	
 
 	int j = i + 1; //anda 1 cada para pular a barra
@@ -98,8 +104,10 @@ DataQuebrada quebraData(char data[]){
 
 	if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
 		sMes[i] = '\0';  // coloca o barra zero no final
-	}else
+	}else {
 		dq.valido = 0;
+    return dq;
+  }
 	
 
 	j = j + 1; //anda 1 cada para pular a barra
@@ -112,16 +120,18 @@ DataQuebrada quebraData(char data[]){
 
 	if(i == 2 || i == 4){ // testa se tem 2 ou 4 digitos
 		sAno[i] = '\0';  // coloca o barra zero no final
-	}else
+	}else {
 		dq.valido = 0;
+    return dq;
+  }
 
-    dq.iDia = atoi(sDia);
-    dq.iMes = atoi(sMes);
-    dq.iAno = atoi(sAno); 
+  dq.iDia = atoi(sDia);
+  dq.iMes = atoi(sMes);
+  dq.iAno = atoi(sAno); 
 
 	dq.valido = 1;
     
-    return dq;
+  return dq;
 }
 /*
  Q1 = validar data
@@ -138,24 +148,19 @@ DataQuebrada quebraData(char data[]){
  */
 int q1(char data[])
 {
-    int datavalida = 1;
+  int datavalida = 1;
 
-    //quebrar a string data em strings sDia, sMes, sAno
+  //quebrar a string data em strings sDia, sMes, sAno
 
-    //DataQuebrada dataQuebrada = quebraData(data);
-    //if (dataQuebrada.valido == 0) return 0;
+  //DataQuebrada dataQuebrada = quebraData(data);
+  //if (dataQuebrada.valido == 0) return 0;
 
-    //converter sDia, sMes e sAno em inteiros (ex: atoi)
+  //printf("%s\n", data);
 
-    //criar as variáveis iDia, iMes, iAno
-    //int iAno = atoi(dataQuebrada.sAno);
-
-    //printf("%s\n", data);
-
-    if (datavalida)
-        return 1;
-    else
-        return 0;
+  if (datavalida)
+      return 1;
+  else
+      return 0;
 }
 
 
@@ -184,7 +189,7 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
       dma.retorno = 2;
       return dma;
     }else if (q1(datafinal) == 0){
-      dma.retorno = 2;
+      dma.retorno = 3;
       return dma;
     }else{
       //verifique se a data final não é menor que a data inicial

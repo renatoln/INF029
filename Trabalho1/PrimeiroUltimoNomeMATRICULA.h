@@ -25,7 +25,7 @@
 
 typedef struct DQ
 {
-    int iDia;
+    int iDia; 
     int iMes;
     int iAno;
     int valido; // 0 se inválido, e 1 se válido 

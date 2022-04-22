@@ -49,6 +49,7 @@ void testSomar()
     printf("%d\n", somar(74, 9) == 83);
     printf("%d\n", somar(30, -9) == 21);
     printf("%d\n", somar(-2, 8) == 6);
+    printf("%d\n", somar(1000, 99) == 1099);
 
 }
 
