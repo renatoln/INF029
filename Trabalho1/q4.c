@@ -12,7 +12,7 @@ int main()
     for (i = 0; texto[i] != '\0'; i += 2)
     {
         printf("%c : ", texto[i]);
-        printf("%i, %i\n", texto[i], texto[i + 1]);
+        printf("%d, %d\n", texto[i], texto[i + 1]);
 
         texto_int[i] = texto[i];
         texto_int[i + 1] = texto[i + 1];
