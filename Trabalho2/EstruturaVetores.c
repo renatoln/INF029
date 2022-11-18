@@ -44,7 +44,7 @@ Rertono (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 CONSTANTES
 */
-int inserirNumeroEstrutura(int posicao, int valor)
+int inserirNumeroEmEstrutura(int posicao, int valor)
 {
     int retorno = 0;
     int existeEstruturaAuxiliar = 0;
