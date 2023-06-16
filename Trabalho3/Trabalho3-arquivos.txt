@@ -1,0 +1,5 @@
+1. Evolua o trabalho 2. Deve ser implementado funções para salvar os dados que foram armazenados nas estruturas principal e auxiliares. Ao abrir o programa, os dados devem ser lidos do arquivo e armazenados em memória. Quando o usuário escolher a opção sair, deve ser chamada a função para salvar os dados. Pode ser utilizado arquivos do tipo Texto ou Binário.
+
+2. Adicione gerenciamento de arquivos ao seu projeto escola
+
+3. Crie um programa que gerencie uma lista encadeada com todas as operações básicas. O programa deve ter arquivos para salvar e recuperar os dados da lista encadeada. Pense em como fazer implemntações de forma recursiva.
