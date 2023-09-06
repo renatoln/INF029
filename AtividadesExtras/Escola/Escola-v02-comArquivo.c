@@ -5,6 +5,7 @@ Escola-v02.c, 13/07/2018, Autor: Renato Novais
 Descrição: esta versão tem:
 - usar o define TAM
 - funções
+- suporte a arquivos (incompleto)
 
 */
 
