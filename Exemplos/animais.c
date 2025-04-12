@@ -3,15 +3,17 @@
 
 typedef struct 
 {
+    int matricula;
     int idade;   
     char sexo;  
+    
 
 } Animal;
 
 int main(){ 
     Animal listaAnimais[TAM];
    
-
+    int incrementadorMatricula = 0;
     int sair = 0;
     int opcao;
     int qtd = 0;
@@ -21,6 +23,8 @@ int main(){
         printf("1 - Cadastrar\n");
         printf("2 - Imprimir todos\n");
         printf("3 - Imprimir maiores que a média\n");
+        printf("4 - Excluir do final\n");
+        printf("5 - Excluir por matricula\n");
         printf("0 - Sair\n");
         scanf("%d", &opcao);
 
@@ -33,9 +37,11 @@ int main(){
                     getchar();
                     printf("Digite a sexo: ");
                     scanf("%c", &listaAnimais[qtd].sexo);
+                    listaAnimais[qtd].matricula = ++incrementadorMatricula;
                     qtd ++;
+                    
                 }else{
-                    printf("PET cheio");
+                    printf("PET cheio\n");
                 }
             
                 break;
@@ -44,7 +50,7 @@ int main(){
                  //imprimindo todos
                 printf("#### Todos animais\n");
                 for (int i = 0; i < qtd; i++){
-                    printf("Idade: %d - Sexo: %c\n", listaAnimais[i].idade, listaAnimais[i].sexo);
+                    printf("Matricula: %d - Idade: %d - Sexo: %c\n", listaAnimais[i].matricula, listaAnimais[i].idade, listaAnimais[i].sexo);
                 }
                 break;
             }
@@ -62,6 +68,46 @@ int main(){
                     if (listaAnimais[i].idade > media)
                         printf("Idade: %d - Sexo: %c\n", listaAnimais[i].idade, listaAnimais[i].sexo);
                 }
+                break;
+            }
+            case 4:{
+                if (qtd > 0){
+                    qtd--;
+                    printf("Exclusão Realizada com sucesso\n");
+                }else{
+                    printf("Não há animais cadastrados\n");
+                }    
+                break;
+            }
+            case 5:{
+                //listar os animais
+                printf("#### Todos animais\n");
+                for (int i = 0; i < qtd; i++){
+                    printf("Matricula: %d - Idade: %d - Sexo: %c\n", listaAnimais[i].matricula, listaAnimais[i].idade, listaAnimais[i].sexo);
+                }
+                //peguntar qual a matricula
+                printf("Digite a matrícula do animal\n");
+                int mat;
+                scanf("%d", &mat);
+                //achar o elemento
+                int achou = 0;
+                for (int i = 0; i < qtd; i++){
+                    if (listaAnimais[i].matricula == mat){
+                        achou = 1;
+                        //fazer o shift
+                        for (int j = i; j < qtd; j++){
+                            listaAnimais[j] = listaAnimais[j + 1];
+                        }
+                        qtd--;
+                        break;
+                    }
+                }
+                if (achou){
+                    printf("Animal excluido com sucesso\n");
+                }else{
+                    printf("Não existe animal com essa matricula\n");
+                }
+                
                 break;
             }
             case 0:{
