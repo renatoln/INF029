@@ -10,23 +10,30 @@ typedef struct
 
 } Animal;
 
+int menu(){
+    int opcao;
+    printf("Opções\n");
+    printf("1 - Cadastrar\n");
+    printf("2 - Imprimir todos\n");
+    printf("3 - Imprimir maiores que a média\n");
+    printf("4 - Excluir do final\n");
+    printf("5 - Excluir por matricula\n");
+    printf("0 - Sair\n");
+    scanf("%d", &opcao);
+    return opcao;
+}
+
 int main(){ 
     Animal listaAnimais[TAM];
    
     int incrementadorMatricula = 0;
     int sair = 0;
-    int opcao;
+    int opcao = 0;
     int qtd = 0;
     
     while (!sair){    //sair == 0    OU    sair != 1
-        printf("Opções\n");
-        printf("1 - Cadastrar\n");
-        printf("2 - Imprimir todos\n");
-        printf("3 - Imprimir maiores que a média\n");
-        printf("4 - Excluir do final\n");
-        printf("5 - Excluir por matricula\n");
-        printf("0 - Sair\n");
-        scanf("%d", &opcao);
+        opcao = menu();
+        
 
         switch (opcao){
             case 1:{
