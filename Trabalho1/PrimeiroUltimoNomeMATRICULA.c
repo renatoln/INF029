@@ -218,6 +218,21 @@ int q6(int numerobase, int numerobusca)
     return qtdOcorrencias;
 }
 
+/*
+ Q7 = jogo busca palavras
+ @objetivo
+    Verificar se existe uma string em uma matriz de caracteres em todas as direções e sentidos possíves
+ @entrada
+    Uma matriz de caracteres e uma string de busca (palavra).
+ @saida
+    1 se achou 0 se não achou
+ */
+
+ int q7(char matriz[8][10], char palavra[5])
+ {
+     int achou;
+     return achou;
+ }
 
 
 
