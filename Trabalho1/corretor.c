@@ -202,10 +202,13 @@ void testQ7()
         { 'D', 'F', 'E', 'H', 'S', 'K', 'J', 'Q', 'R', 'T' },
         { 'U', 'X', 'Y', 'W', 'V', 'O', 'P', 'N', 'M', 'L' }
     };
-    char stringBusca [5] = { 'L', 'T', 'B', 'O', 'N'};
+    char stringBusca [5] = { 'F', 'E', 'H', 'S', 'K'};
     printf("%d\n", q7(matrix, stringBusca) == 1);
     strcpy(stringBusca, "KJQRT");
     printf("%d\n", q7(matrix, stringBusca) == 1);
     strcpy(stringBusca, "AATOK");
     printf("%d\n", q7(matrix, stringBusca) == 0);
+    strcpy(stringBusca, "LTBON");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+
 }
