@@ -10,20 +10,23 @@ void testQ3();
 void testQ4();
 void testQ5();
 void testQ6();
+void testQ7();
 
 int main(){
-    //pridntf("q1\n");
+    //printf("q1\n");
     testQ1(); // 10 testes
-    //pridntf("q2\n");
+    //printf("q2\n");
     testQ2(); // 35 testes
-    //prindtf("q3\n");
+    //printf("q3\n");
     testQ3(); // 13 testes
-    //prdintf("q4\n");
+    //printf("q4\n");
     testQ4(); // 22 testes
-    //prdintf("q5\n");
+    //printf("q5\n");
     testQ5(); // 10 testes
-    //prdintf("q6\n");
+    //printf("q6\n");
     testQ6(); // 10 testes 
+    //printf("q7\n");
+    testQ7();
     
     
 }
@@ -290,3 +293,38 @@ void testQ6(){
 }
       
         
+
+void testQ7()
+{
+    char matrix[8][10] = {
+        { 'Q', 'M', 'J', 'D', 'L', 'A', 'Z', 'F', 'C', 'R' },
+        { 'N', 'B', 'Y', 'G', 'P', 'S', 'K', 'H', 'E', 'X' },
+        { 'V', 'O', 'W', 'U', 'T', 'I', 'Z', 'A', 'L', 'C' },
+        { 'M', 'Q', 'B', 'D', 'N', 'F', 'R', 'J', 'G', 'E' },
+        { 'H', 'S', 'K', 'T', 'U', 'X', 'W', 'O', 'P', 'Y' },
+        { 'C', 'Z', 'A', 'I', 'L', 'M', 'V', 'G', 'N', 'B' },
+        { 'D', 'F', 'E', 'H', 'S', 'K', 'J', 'Q', 'R', 'T' },
+        { 'U', 'X', 'Y', 'W', 'V', 'O', 'P', 'N', 'M', 'L' }
+    };
+    char stringBusca [6] = { 'F', 'E', 'H', 'S', 'K'};
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "KJQRT");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "AATOK");
+    printf("%d\n", q7(matrix, stringBusca) == 0);
+    strcpy(stringBusca, "LTBON");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "UDWBQ");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "NXVQM");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "XRAER");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "NTAFU");
+    printf("%d\n", q7(matrix, stringBusca) == 1);
+    strcpy(stringBusca, "WOPYC");
+    printf("%d\n", q7(matrix, stringBusca) == 0);
+    strcpy(stringBusca, "DBQMV");
+    printf("%d\n", q7(matrix, stringBusca) == 0);
+
+}
