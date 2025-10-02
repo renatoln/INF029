@@ -3,6 +3,8 @@
 
 //CRUD = Create, Read, Update, Delete
 
+void menu_principal();
+
 int main(){
     
     int anos[TAM];
@@ -11,12 +13,7 @@ int main(){
     int sair = 0;
     
     while(sair == 0){
-        printf("digite a opcao:\n");
-        printf("0 - Sair\n");
-        printf("1 - Cadastrar\n");
-        printf("2 - Listar\n");
-        printf("3 - Atualizar\n");
-        printf("4 - Excluir\n");
+        menu_principal();
         int opcao = -1;
         scanf("%d", &opcao);
         switch (opcao){
@@ -41,10 +38,7 @@ int main(){
                 break;
             }
             case 2: {
-                printf("Listando....\n");
-                for (int i = 0; i < qtdCarros; i++){
-                    printf("Carro... Ano: %d ... Chassi: %d\n", anos[i], chassis[i]);
-                }
+                
                 
                 break;
             }
@@ -87,4 +81,21 @@ int main(){
     */
 
 
+}
+
+void menu_principal(){
+    printf("Digite a opcao:\n");
+    printf("0 - Sair\n");
+    printf("1 - Cadastrar\n");
+    printf("2 - Listar\n");
+    printf("3 - Atualizar\n");
+    printf("4 - Excluir\n");
+}
+
+void listar_carros(){
+
+    printf("Listando....\n");
+    for (int i = 0; i < qtdCarros; i++){
+        printf("Carro... Ano: %d ... Chassi: %d\n", anos[i], chassis[i]);
+    }
 }
