@@ -5,6 +5,7 @@
 
 void menu_principal();
 void listar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
+int inserir_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
 
 int main(){
     
@@ -23,19 +24,14 @@ int main(){
                 break;
             }
             case 1: {
-                
-                if (qtdCarros == TAM ){
+                int retorno = inserir_carros(qtdCarros, anos, chassis);
+                if (retorno == 1)
                     printf("Quantidade de carros excedida!\n");
-                }else{
-                    printf("Cadastrando....\n");
-                    printf("Digite o ano: ");
-                    scanf("%d", &anos[qtdCarros]);
-    
-                    printf("Digite o chassi: ");
-                    scanf("%d", &chassis[qtdCarros]);
+                else if (retorno == 2){
+                    printf("Cadastro realizado com sucesso!\n");
+                    qtdCarros++;
                 }
 
-                qtdCarros++;
                 break;
             }
             case 2: {
@@ -98,4 +94,21 @@ void listar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
     for (int i = 0; i < qtdCarros; i++){
         printf("Carro... Ano: %d ... Chassi: %d\n", anos[i], chassis[i]);
     }
+}
+
+int inserir_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
+
+    if (qtdCarros == TAM ){
+        return 1; //tamanho excedido
+    }else{
+        printf("Cadastrando....\n");
+        printf("Digite o ano: ");
+        scanf("%d", &anos[qtdCarros]);
+
+        printf("Digite o chassi: ");
+        scanf("%d", &chassis[qtdCarros]);
+        return 2; //cadastro correto
+    }
+
+    
 }
