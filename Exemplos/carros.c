@@ -4,6 +4,7 @@
 //CRUD = Create, Read, Update, Delete
 
 void menu_principal();
+void listar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
 
 int main(){
     
@@ -38,7 +39,7 @@ int main(){
                 break;
             }
             case 2: {
-                
+                listar_carros(qtdCarros, anos, chassis);
                 
                 break;
             }
@@ -80,7 +81,6 @@ int main(){
 
     */
 
-
 }
 
 void menu_principal(){
@@ -92,7 +92,7 @@ void menu_principal(){
     printf("4 - Excluir\n");
 }
 
-void listar_carros(){
+void listar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
 
     printf("Listando....\n");
     for (int i = 0; i < qtdCarros; i++){
