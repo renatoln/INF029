@@ -9,12 +9,20 @@ int inserir_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
 int excluir_carros(int qtdCarros);
 void atualizar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
 
+typedef struct c{
+  int ano;
+  int chassi;
+} Carro;
+
+
+
 int main(){
     
-    int anos[TAM];
-    int chassis[TAM];
-    int ativos[TAM];
-
+    //int anos[TAM];
+    //int chassis[TAM];
+    
+    Carros listaCarros[TAM];
+    
     int qtdCarros = 0;
     int sair = 0;
     
@@ -72,25 +80,25 @@ void menu_principal(){
     printf("4 - Excluir\n");
 }
 
-void listar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
+void listar_carros(int qtdCarros, Carros listaCarros[TAM]){
 
     printf("Listando....\n");
     for (int i = 0; i < qtdCarros; i++){
-        printf("Carro... Ano: %d ... Chassi: %d\n", anos[i], chassis[i]);
+        printf("Carro... Ano: %d ... Chassi: %d\n", listaCarros[i].ano, listaCarros[i].chassi);
     }
 }
 
-int inserir_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
+int inserir_carros(int qtdCarros, Carros listaCarros[TAM]){
 
     if (qtdCarros == TAM ){
         return 1; //tamanho excedido
     }else{
         printf("Cadastrando....\n");
         printf("Digite o ano: ");
-        scanf("%d", &anos[qtdCarros]);
+        scanf("%d", &listaCarros[qtdCarros].ano);
 
         printf("Digite o chassi: ");
-        scanf("%d", &chassis[qtdCarros]);
+        scanf("%d", &listaCarros[qtdCarros].chassi);
         return 2; //cadastro correto
     }
 
