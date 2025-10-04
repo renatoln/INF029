@@ -6,11 +6,15 @@
 void menu_principal();
 void listar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
 int inserir_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
+int excluir_carros(int qtdCarros);
+void atualizar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]);
 
 int main(){
     
     int anos[TAM];
     int chassis[TAM];
+    int ativos[TAM];
+
     int qtdCarros = 0;
     int sair = 0;
     
@@ -40,43 +44,23 @@ int main(){
                 break;
             }
             case 3: {
-                printf("Atualizando....\n");
-                for (int i = 0; i < qtdCarros; i++){
-                    printf("Carro #%d: Ano: %d ... Chassi: %d\n", i+1, anos[i], chassis[i]);
-                }
-                printf("Digite o número do carro que vc quer atualizar: \n");
-                int num;
-                scanf("%d", &num);
-                if (num >= 1 && num <= qtdCarros){
-                    printf("Digite o ano: ");
-                    scanf("%d", &anos[num - 1]);
-    
-                    printf("Digite o chassi: ");
-                    scanf("%d", &chassis[num - 1]);
-                }else {
-                    printf("Número inválido\n");
-                }
+                atualizar_carros(qtdCarros, anos, chassis);
 
                 break;
             }
             case 4: {
-                printf("Excluindo....\n");
-                if (qtdCarros > 0)
-                    qtdCarros --;
+                int retorno = excluir_carros(qtdCarros);
+                if (retorno == 1){
+                    printf("Carro excluido com sucesso\n");
+                    qtdCarros--;
+                }
                 else
                     printf("Sem carros cadastrados\n");
                 break;
             }
             default: printf("Opcao inválida....\n");
         }
-
     }
-
-    //cadastrar
-    /*
-
-    */
-
 }
 
 void menu_principal(){
@@ -111,4 +95,31 @@ int inserir_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
     }
 
     
+}
+
+int excluir_carros(int qtdCarros){
+    printf("Excluindo....\n");
+    if (qtdCarros > 0)
+        return 1;
+    else
+        return 0;
+}
+
+void atualizar_carros(int qtdCarros, int anos[TAM], int chassis[TAM]){
+    printf("Atualizando....\n");
+    for (int i = 0; i < qtdCarros; i++){
+        printf("Carro #%d: Ano: %d ... Chassi: %d\n", i+1, anos[i], chassis[i]);
+    }
+    printf("Digite o número do carro que vc quer atualizar: \n");
+    int num;
+    scanf("%d", &num);
+    if (num >= 1 && num <= qtdCarros){
+        printf("Digite o ano: ");
+        scanf("%d", &anos[num - 1]);
+
+        printf("Digite o chassi: ");
+        scanf("%d", &chassis[num - 1]);
+    }else {
+        printf("Número inválido\n");
+    }
 }
