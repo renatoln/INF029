@@ -238,18 +238,19 @@ void testQ4(){
     printf("%d\n",posicoes[3]==37);
 
 
-    for (i = 0; i<30; i++){
+    for (i = 0; i < 30; i++)
+    {
         posicoes[i] = -1;
     }
-    strcpy(strTexto,"Ola, o mundo e muito grande. Tem muitas pessoas, e muitos problemas");
-    strcpy(strBusca,"mui");
-    printf("%d\n",q4(strTexto, strBusca, posicoes) == 3);
-    printf("%d\n",posicoes[0]==16);
-    printf("%d\n",posicoes[1]==18);
-    printf("%d\n",posicoes[2]==34);
-    printf("%d\n",posicoes[3]==36);
-    printf("%d\n",posicoes[4]==52);
-    printf("%d\n",posicoes[5]==54);
+    strcpy(strTexto, "Olá, o mundo é muito grande. Tem muitas pessoas, e muitos problemas");
+    strcpy(strBusca, "mui");
+    printf("%d\n", q4(strTexto, strBusca, posicoes) == 3);
+    printf("%d\n", posicoes[0] == 16);
+    printf("%d\n", posicoes[1] == 18);
+    printf("%d\n", posicoes[2] == 34);
+    printf("%d\n", posicoes[3] == 36);
+    printf("%d\n", posicoes[4] == 52);
+    printf("%d\n", posicoes[5] == 54);
 
     for (i = 0; i<30; i++){
         posicoes[i] = -1;
