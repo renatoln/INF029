@@ -31,7 +31,15 @@ int main(){
     
 }
 
+int ligado = 0;
+void show_log(char *str)
+{
+    if (ligado)
+        printf("###%s###\n", str);
+}
+
 void testQ1(){
+    show_log("testQ1()");
     char str[11];
     strcpy(str,"29/02/2015");
     printf("%d\n",q1(str) == 0);
@@ -57,6 +65,7 @@ void testQ1(){
 }
 
 void testQ2(){
+    show_log("testQ2()");
     char datainicial[11], datafinal[11];
     int qtdDias, qtdMeses, qtdAnos;
     DiasMesesAnos dma;
@@ -189,6 +198,7 @@ void testQ2(){
 }
 
 void testQ3(){
+    show_log("testQ3()");
     char str[250];
     strcpy(str,"Renato Lima Novais");
     printf("%d\n",q3(str, 'a', 0) == 3);
@@ -211,6 +221,7 @@ void testQ3(){
 }
 
 void testQ4(){
+    show_log("testQ4()");
     char strTexto[250];
     char strBusca[50];
     int posicoes[30];
@@ -266,6 +277,7 @@ void testQ4(){
 
 
 void testQ5(){
+    show_log("testQ5()");
     printf("%d\n",q5(345) == 543);
     printf("%d\n",q5(78) == 87);
     printf("%d\n",q5(3) == 3);
@@ -279,6 +291,7 @@ void testQ5(){
 }
 
 void testQ6(){
+    show_log("testQ6()");
     printf("%d\n",q6(34567368, 3) == 2);
     printf("%d\n",q6(34567368, 4576) == 0);
     printf("%d\n",q6(3539343, 3) == 4);
@@ -296,6 +309,7 @@ void testQ6(){
 
 void testQ7()
 {
+    show_log("testQ7()");
     char matrix[8][10] = {
         { 'Q', 'M', 'J', 'D', 'L', 'A', 'Z', 'F', 'C', 'R' },
         { 'N', 'B', 'Y', 'G', 'P', 'S', 'K', 'H', 'E', 'X' },
