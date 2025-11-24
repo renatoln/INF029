@@ -1,0 +1,37 @@
+# Object files
+*.o
+*.obj
+
+# Executables
+*.exe
+a.out
+*.bin
+
+# Libraries
+*.lib
+*.dll
+*.so
+
+# Debugging and temporary files
+*.swp
+*.~
+*.bak
+*.tmp
+*.log
+
+# Build directories (if applicable)
+build/
+bin/
+obj/
+
+# IDE-specific files (e.g., if using Visual Studio Code or other IDEs)
+.vscode/
+.idea/
+*.suo
+*.user
+*.ilk
+*.pdb
+
+# pastas específicas 
+scripts/repos
+scripts/resultados
