@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define TAM 10
 
-#include "EstruturaVetores.h"
+#include "trabalho2.h"
 
 int vetorPrincipal[TAM];
 
