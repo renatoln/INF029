@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "EstruturaVetores.h"
+#include "trabalho2.h"
 
 void show_log(char *str);
 
