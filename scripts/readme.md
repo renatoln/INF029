@@ -1,39 +1,41 @@
-📘 README — Script de Correção Automática de Trabalhos (C)
+# 📘 Script de Correção Automática de Trabalhos em C
 
-Este projeto contém um script Bash para clonar repositórios de alunos, compilar e corrigir automaticamente trabalhos em C usando corretores externos, gerando um arquivo CSV com notas e observações.
+Este projeto contém um **script Bash** para **clonar repositórios de alunos**, **compilar** e **corrigir automaticamente** trabalhos em linguagem C, utilizando **corretores oficiais**, e gerando um **arquivo CSV com notas, erros e observações**.
 
-Atualmente, o script suporta:
+O script foi projetado para uso acadêmico (professores e monitores) e é facilmente extensível para novos trabalhos.
 
-✅ Trabalho 1
+---
 
-✅ Trabalho 2
-
-✅ Expansão fácil para trabalhos futuros
-
-📁 Estrutura de Diretórios
+## 📁 Estrutura de Diretórios
 
 A estrutura esperada do projeto é:
 
 .
 ├── trabalho1/
-│   └── corretor-final.c
+│ └── corretor-final.c
 │
 ├── trabalho2/
-│   └── mainTeste.c
+│ └── mainTeste.c
 │
 └── scripts/
-    ├── corrigir.sh
-    ├── repos.txt
-    ├── repos/
-    │   ├── INF029-Aluno1/
-    │   │   ├── trabalho1/
-    │   │   └── trabalho2/
-    │   └── INF029-Aluno2/
-    └── resultados/
-        └── notas.csv
+├── corrigir.sh
+├── repos.txt
+├── repos/
+│ ├── INF029-Aluno1/
+│ │ ├── trabalho1/
+│ │ └── trabalho2/
+│ └── INF029-Aluno2/
+└── resultados/
+└── notas.csv
 
-🧪 Estrutura esperada dos trabalhos dos alunos
-📌 Trabalho 1
+yaml
+Copy code
+
+---
+
+## 🧪 Estrutura esperada dos trabalhos dos alunos
+
+### Trabalho 1
 
 Dentro do repositório do aluno:
 
@@ -41,7 +43,14 @@ trabalho1/
 ├── trabalho1.c
 └── trabalho1.h
 
-📌 Trabalho 2
+yaml
+Copy code
+
+O `main()` é fornecido pelo corretor oficial (`corretor-final.c`).
+
+---
+
+### Trabalho 2
 
 Dentro do repositório do aluno:
 
@@ -49,92 +58,114 @@ trabalho2/
 ├── trabalho2.c
 └── trabalho2.h
 
+yaml
+Copy code
 
-⚠️ O main() não vem do aluno, mas sim do corretor oficial.
+O `main()` é fornecido pelo corretor oficial (`mainTeste.c`).
 
-🧠 Funcionamento geral do script
+---
 
-O script:
+## 📄 Arquivo repos.txt
 
-(Opcionalmente) clona os repositórios listados em repos.txt
+O arquivo `repos.txt` deve estar dentro da pasta `scripts/`.
 
-Para cada aluno:
-
-compila o trabalho junto com o corretor oficial
-
-executa o programa
-
-conta quantos 1 (acertos) e 0 (erros) foram impressos
-
-calcula a nota (0 a 10)
-
-Gera um CSV consolidado, com:
-
-acertos
-
-erros
-
-nota por trabalho
-
-observações de erro
-
-nota final (média dos trabalhos corrigidos)
-
-⚠️ Erros de compilação ou execução não interrompem o script.
-
-📄 Arquivo repos.txt
-
-O arquivo repos.txt deve ficar dentro da pasta scripts/
-Cada linha contém uma URL de repositório Git:
+Cada linha contém a URL de um repositório Git:
 
 https://github.com/usuario/INF029-RenatoNovais.git
 https://github.com/usuario/INF029-LeticiaGomes.git
 
+yaml
+Copy code
 
-Linhas vazias ou iniciadas com # são ignoradas.
+- Linhas vazias são ignoradas
+- Linhas iniciadas com `#` são tratadas como comentário
 
-▶️ Como executar
+---
 
-Entre na pasta scripts:
+## ⚙️ Funcionalidades do script
+
+O script:
+
+- Clona repositórios (opcional)
+- Compila trabalhos junto com o corretor oficial
+- Executa testes automatizados
+- Conta acertos (`1`) e erros (`0`)
+- Calcula nota de 0 a 10
+- Gera CSV consolidado
+- Não interrompe a execução em caso de erro de um aluno
+
+---
+
+## ▶️ Como executar
+
+Entre na pasta `scripts`:
 
 cd scripts
 
+scss
+Copy code
 
 Dê permissão de execução (apenas uma vez):
 
 chmod +x corrigir.sh
 
-⚙️ Opções disponíveis
-🔹 Clonar repositórios
+yaml
+Copy code
+
+---
+
+## 🧾 Opções de linha de comando
+
+### Clonar repositórios
 ./corrigir.sh -c
 ./corrigir.sh -clone
 
-🔹 Corrigir sem clonar (usa o que já está em repos/)
+graphql
+Copy code
+
+### Corrigir sem clonar (usa repositórios existentes)
 ./corrigir.sh
 
-🔹 Corrigir apenas um aluno
+shell
+Copy code
+
+### Corrigir apenas um aluno
 ./corrigir.sh -a Renato
 ./corrigir.sh -aluno Renato
 
-🔹 Corrigir apenas Trabalho 1
+graphql
+Copy code
+
+### Corrigir apenas Trabalho 1
 ./corrigir.sh -t1
 
-🔹 Corrigir apenas Trabalho 2
+graphql
+Copy code
+
+### Corrigir apenas Trabalho 2
 ./corrigir.sh -t2
 
-🔹 Combinações possíveis
-# Clonar e corrigir só o Trabalho 1
+shell
+Copy code
+
+### Combinações válidas
 ./corrigir.sh -c -t1
-
-# Corrigir só o Trabalho 2 de um aluno específico
 ./corrigir.sh -t2 -a Leticia
+./corrigir.sh -c -a Renato
 
-📊 Arquivo de saída (notas.csv)
+yaml
+Copy code
 
-O CSV é gerado em:
+---
+
+## 📊 Arquivo de saída
+
+O resultado é salvo em:
 
 scripts/resultados/notas.csv
 
+yaml
+Copy code
 
 Exemplo de colunas:
 
@@ -143,57 +174,50 @@ t1_acertos,t1_erros,t1_nota,t1_obs,
 t2_acertos,t2_erros,t2_nota,t2_obs,
 nota_final
 
+yaml
+Copy code
 
-A nota final é a média aritmética dos trabalhos corrigidos na execução
+- A **nota final** é a média aritmética dos trabalhos corrigidos
+- O arquivo CSV é **sempre sobrescrito** a cada execução
 
-O arquivo é sempre sobrescrito a cada execução
+---
 
-🚨 Tratamento de erros
+## 🚨 Tratamento de erros
 
-O script detecta automaticamente:
+O script detecta e registra:
 
-❌ Pasta do trabalho inexistente
+- Pasta do trabalho inexistente
+- Arquivos `.c` ou `.h` ausentes
+- Erro de compilação
+- Erro de execução
+- Timeout (se disponível no sistema)
 
-❌ Arquivos .c ou .h ausentes
+Essas situações aparecem na coluna **observação** do CSV.
 
-❌ Erro de compilação
+---
 
-❌ Erro de execução
+## 🧩 Extensões futuras
 
-⏱️ Timeout (se disponível no sistema)
+O script foi escrito para facilitar:
 
-Esses problemas são registrados na coluna observação do CSV.
+- Inclusão de Trabalho 3, 4, etc.
+- Pesos diferentes por trabalho
+- Nota mínima por atividade
+- Relatórios individuais por aluno
+- Execução paralela
 
-🧩 Expansão futura
+---
 
-O script foi escrito para facilitar extensões como:
+## 🧑‍🏫 Público-alvo
 
-Trabalho 3, 4, 5…
+- Professores
+- Monitores
+- Disciplinas introdutórias de Programação em C
+- Turmas grandes com correção automatizada
 
-Pesos diferentes por trabalho
+---
 
-Nota mínima obrigatória
+## ✅ Conclusão
 
-Geração de relatórios individuais
+Este script fornece uma solução **robusta, reutilizável e extensível** para correção automática de trabalhos em C, com foco em **produtividade, clareza e confiabilidade**.
 
-Execução paralela
-
-Exportação para PDF
-
-🧑‍🏫 Público-alvo
-
-Este script é ideal para:
-
-professores
-
-monitores
-
-disciplinas de programação em C
-
-turmas grandes com correção automática
-
-✅ Conclusão
-
-Este projeto fornece uma solução robusta, reutilizável e extensível para correção automática de trabalhos em C, com foco em produtividade, clareza e segurança.
-
-Se quiser evoluir ainda mais, é só pedir 🚀
