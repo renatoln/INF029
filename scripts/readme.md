@@ -220,4 +220,3 @@ O script foi escrito para facilitar:
 ## ✅ Conclusão
 
 Este script fornece uma solução **robusta, reutilizável e extensível** para correção automática de trabalhos em C, com foco em **produtividade, clareza e confiabilidade**.
-
