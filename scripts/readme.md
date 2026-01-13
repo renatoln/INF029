@@ -28,9 +28,6 @@ A estrutura esperada do projeto é:
 └── resultados/
 └── notas.csv
 
-yaml
-Copy code
-
 ---
 
 ## 🧪 Estrutura esperada dos trabalhos dos alunos
@@ -42,9 +39,6 @@ Dentro do repositório do aluno:
 trabalho1/
 ├── trabalho1.c
 └── trabalho1.h
-
-yaml
-Copy code
 
 O `main()` é fornecido pelo corretor oficial (`corretor-final.c`).
 
@@ -58,8 +52,6 @@ trabalho2/
 ├── trabalho2.c
 └── trabalho2.h
 
-yaml
-Copy code
 
 O `main()` é fornecido pelo corretor oficial (`mainTeste.c`).
 
@@ -74,8 +66,6 @@ Cada linha contém a URL de um repositório Git:
 https://github.com/usuario/INF029-RenatoNovais.git
 https://github.com/usuario/INF029-LeticiaGomes.git
 
-yaml
-Copy code
 
 - Linhas vazias são ignoradas
 - Linhas iniciadas com `#` são tratadas como comentário
@@ -102,15 +92,9 @@ Entre na pasta `scripts`:
 
 cd scripts
 
-scss
-Copy code
-
 Dê permissão de execução (apenas uma vez):
 
 chmod +x corrigir.sh
-
-yaml
-Copy code
 
 ---
 
@@ -120,41 +104,23 @@ Copy code
 ./corrigir.sh -c
 ./corrigir.sh -clone
 
-graphql
-Copy code
-
 ### Corrigir sem clonar (usa repositórios existentes)
 ./corrigir.sh
-
-shell
-Copy code
 
 ### Corrigir apenas um aluno
 ./corrigir.sh -a Renato
 ./corrigir.sh -aluno Renato
 
-graphql
-Copy code
-
 ### Corrigir apenas Trabalho 1
 ./corrigir.sh -t1
 
-graphql
-Copy code
-
 ### Corrigir apenas Trabalho 2
 ./corrigir.sh -t2
-
-shell
-Copy code
 
 ### Combinações válidas
 ./corrigir.sh -c -t1
 ./corrigir.sh -t2 -a Leticia
 ./corrigir.sh -c -a Renato
-
-yaml
-Copy code
 
 ---
 
@@ -164,18 +130,12 @@ O resultado é salvo em:
 
 scripts/resultados/notas.csv
 
-yaml
-Copy code
-
 Exemplo de colunas:
 
 aluno,
 t1_acertos,t1_erros,t1_nota,t1_obs,
 t2_acertos,t2_erros,t2_nota,t2_obs,
 nota_final
-
-yaml
-Copy code
 
 - A **nota final** é a média aritmética dos trabalhos corrigidos
 - O arquivo CSV é **sempre sobrescrito** a cada execução
