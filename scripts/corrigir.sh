@@ -1,209 +1,213 @@
 #!/bin/bash
-set -u
-set -o pipefail
 
-#########################################
-# CONFIGURAÇÃO
-#########################################
+#############################################
+# DIRETÓRIO DO SCRIPT
+#############################################
 
-URL_CORRETOR_T1="../trabalho1/corretor-final.c"
-URL_CORRETOR_T2="../trabalho2/mainTeste.c"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-CORRETOR_T1="$URL_CORRETOR_T1"
-CORRETOR_T2="$URL_CORRETOR_T2"
+#############################################
+# CONFIGURAÇÕES
+#############################################
 
-REPOS_DIR="./repos"
-RESULT_DIR="./resultados"
-REPOS_FILE="./repos.txt"
-OUTPUT_CSV="$RESULT_DIR/notas.csv"
+REPOS_DIR="$SCRIPT_DIR/repos"
+RESULTADOS_DIR="$SCRIPT_DIR/resultados"
+ARQUIVO_REPOS="$SCRIPT_DIR/repos.txt"
+CSV_SAIDA="$RESULTADOS_DIR/notas.csv"
 
-mkdir -p "$REPOS_DIR" "$RESULT_DIR"
+URL_CORRETOR_T1="$SCRIPT_DIR/../trabalho1/corretor-final.c"
+URL_CORRETOR_T2="$SCRIPT_DIR/../trabalho2/mainTeste.c"
 
-#########################################
+PENALIDADE_SEGFAULT=2.0
+
+#############################################
+# FLAGS
+#############################################
+
+DO_CLONE=false
+CORRIGIR_T1=false
+CORRIGIR_T2=false
+ALUNO_ESPECIFICO=""
+DO_CLEAN=false
+
+#############################################
 # PARÂMETROS
-#########################################
-
-DO_CLONE=0
-ONLY_ALUNO=""
-
-CORRIGE_T1=0
-CORRIGE_T2=0
+#############################################
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -c|-clone)
-            DO_CLONE=1
-            shift
-            ;;
+        -c|-clone) DO_CLONE=true ;;
+        -t1) CORRIGIR_T1=true ;;
+        -t2) CORRIGIR_T2=true ;;
+        -clean) DO_CLEAN=true ;;
         -a|-aluno)
-            ONLY_ALUNO="$2"
-            shift 2
-            ;;
-        -t1)
-            CORRIGE_T1=1
             shift
-            ;;
-        -t2)
-            CORRIGE_T2=1
-            shift
+            ALUNO_ESPECIFICO="$1"
             ;;
         *)
             echo "Parâmetro desconhecido: $1"
-            echo "Uso: ./corrigir.sh [-c|-clone] [-a|-aluno nome] [-t1] [-t2]"
             exit 1
             ;;
     esac
+    shift
 done
 
-# Se nenhum trabalho foi especificado, corrige ambos
-if [[ $CORRIGE_T1 -eq 0 && $CORRIGE_T2 -eq 0 ]]; then
-    CORRIGE_T1=1
-    CORRIGE_T2=1
+if ! $CORRIGIR_T1 && ! $CORRIGIR_T2; then
+    CORRIGIR_T1=true
+    CORRIGIR_T2=true
 fi
 
-#########################################
-# TIMEOUT
-#########################################
+#############################################
+# FUNÇÕES
+#############################################
 
-if command -v timeout >/dev/null 2>&1; then
-    TIMEOUT_CMD="timeout"
-elif command -v gtimeout >/dev/null 2>&1; then
-    TIMEOUT_CMD="gtimeout"
-else
-    TIMEOUT_CMD=""
-    echo "⚠ timeout não encontrado"
-fi
+contar_testes_corretor() {
+    grep -E '^[[:space:]]*printf\s*\(\s*"%d\\n"\s*,.*==.*\);' "$1" \
+        | grep -v '^[[:space:]]*//' \
+        | wc -l
+}
 
-#########################################
-# CSV HEADER
-#########################################
+corrigir_trabalho() {
+    local arquivo_c="$1"
+    local corretor="$2"
+    local total_testes="$3"
 
-header="aluno"
+    local acertos=0
+    local falhas=0
+    local obs=""
+    local nota="0.00"
 
-[[ $CORRIGE_T1 -eq 1 ]] && header+=",t1_acertos,t1_erros,t1_nota,t1_obs"
-[[ $CORRIGE_T2 -eq 1 ]] && header+=",t2_acertos,t2_erros,t2_nota,t2_obs"
+    gcc "$corretor" "$arquivo_c" -o exec 2>/dev/null
+    if [[ $? -ne 0 ]]; then
+        echo "0,0,0.00,erro de compilacao"
+        return
+    fi
 
-header+=",nota_final"
+    saida=$(stdbuf -oL ./exec 2>&1)
+    status=$?
 
-echo "$header" > "$OUTPUT_CSV"
+    acertos=$(echo "$saida" | tr -cs '01' '\n' | grep -c '^1$')
+    falhas=$(echo "$saida" | tr -cs '01' '\n' | grep -c '^0$')
 
-#########################################
+    nota=$(awk -v a="$acertos" -v t="$total_testes" '
+        BEGIN {
+            if (t > 0) printf "%.2f", (a/t)*10;
+            else print "0.00";
+        }
+    ')
+
+    if [[ $status -ne 0 ]]; then
+        obs="segmentation fault"
+        nota=$(awk -v n="$nota" -v p="$PENALIDADE_SEGFAULT" '
+            BEGIN {
+                r = n - p
+                if (r < 0) r = 0
+                printf "%.2f", r
+            }
+        ')
+    fi
+
+    echo "$acertos,$falhas,$nota,$obs"
+}
+
+#############################################
+# PREPARAÇÃO
+#############################################
+
+mkdir -p "$REPOS_DIR" "$RESULTADOS_DIR"
+echo "aluno,t1_acertos,t1_falhas,t1_nota,t1_obs,t2_acertos,t2_falhas,t2_nota,t2_obs,nota_final" > "$CSV_SAIDA"
+
+TOTAL_TESTES_T1=0
+TOTAL_TESTES_T2=0
+
+$CORRIGIR_T1 && TOTAL_TESTES_T1=$(contar_testes_corretor "$URL_CORRETOR_T1")
+$CORRIGIR_T2 && TOTAL_TESTES_T2=$(contar_testes_corretor "$URL_CORRETOR_T2")
+
+#############################################
 # CLONE
-#########################################
+#############################################
 
-if [[ "$DO_CLONE" -eq 1 ]]; then
-    if [[ ! -f "$REPOS_FILE" ]]; then
-        echo "Erro: repos.txt não encontrado"
+if $DO_CLONE; then
+    echo "==> Clonando repositórios"
+
+    if [[ ! -f "$ARQUIVO_REPOS" ]]; then
+        echo "ERRO: arquivo repos.txt não encontrado em $ARQUIVO_REPOS"
         exit 1
     fi
 
-    while IFS= read -r url || [[ -n "$url" ]]; do
-        [[ -z "$url" || "$url" =~ ^# ]] && continue
-        name=$(basename "$url" .git)
+    while IFS= read -r repo || [[ -n "$repo" ]]; do
+        # ignora linhas vazias ou comentadas
+        [[ -z "$repo" ]] && continue
+        [[ "$repo" =~ ^[[:space:]]*# ]] && continue
 
-        [[ -n "$ONLY_ALUNO" && "$name" != *"$ONLY_ALUNO"* ]] && continue
+        nome=$(basename "$repo" .git)
+        echo "   -> Clonando $nome"
 
-        if [[ -d "$REPOS_DIR/$name" ]]; then
-            echo "📁 $name já existe"
-            continue
+        rm -rf "$REPOS_DIR/$nome"
+
+        git clone "$repo" "$REPOS_DIR/$nome" \
+            >"$REPOS_DIR/$nome.clone.log" 2>&1
+
+        if [[ $? -ne 0 ]]; then
+            echo "      ERRO ao clonar $nome (ver $nome.clone.log)"
         fi
 
-        echo "🔽 Clonando $name"
-        git clone "$url" "$REPOS_DIR/$name" &> "$REPOS_DIR/$name.clone.log"
-    done < "$REPOS_FILE"
+    done < "$ARQUIVO_REPOS"
 fi
 
-#########################################
-# FUNÇÃO DE CORREÇÃO
-#########################################
+#############################################
+# CLEAN
+#############################################
 
-corrigir_trabalho() {
-    local aluno_dir="$1"
-    local trabalho="$2"
-    local corretor="$3"
+if $DO_CLEAN; then
+    echo "==> Limpando ambiente"
+    rm -rf "$REPOS_DIR"/*
+    rm -rf "$RESULTADOS_DIR"/*
+fi
 
-    local tdir="$aluno_dir/$trabalho"
-    local cfile="$tdir/$trabalho.c"
-    local hfile="$tdir/$trabalho.h"
-    local bin="$aluno_dir/${trabalho}_prog"
 
-    if [[ ! -d "$tdir" ]]; then
-        echo "0,0,0,Pasta inexistente"
-        return
-    fi
-
-    if [[ ! -f "$cfile" || ! -f "$hfile" ]]; then
-        echo "0,0,0,Arquivos ausentes"
-        return
-    fi
-
-    gcc "$corretor" "$cfile" -I"$tdir" -o "$bin" &> "$aluno_dir/${trabalho}_compile.log"
-    [[ $? -ne 0 ]] && { echo "0,0,0,Erro de compilacao"; return; }
-
-    if [[ -n "$TIMEOUT_CMD" ]]; then
-        result=$($TIMEOUT_CMD 5s "$bin" 2> "$aluno_dir/${trabalho}_exec.log")
-        status=$?
-    else
-        result=$("$bin" 2> "$aluno_dir/${trabalho}_exec.log")
-        status=$?
-    fi
-
-    [[ $status -ne 0 ]] && { echo "0,0,0,Erro de execucao"; return; }
-
-    acertos=$(printf "%s" "$result" | tr ' ' '\n' | grep -x 1 | wc -l)
-    erros=$(printf "%s" "$result" | tr ' ' '\n' | grep -x 0 | wc -l)
-    total=$((acertos + erros))
-
-    if [[ $total -gt 0 ]]; then
-        nota=$(awk "BEGIN{printf \"%.2f\", ($acertos/$total)*10}")
-    else
-        nota="0.00"
-    fi
-
-    echo "$acertos,$erros,$nota,"
-}
-
-#########################################
+#############################################
 # CORREÇÃO
-#########################################
+#############################################
 
 for aluno_dir in "$REPOS_DIR"/*; do
-    [[ -d "$aluno_dir" ]] || continue
+
+    # Ignora se não for diretório
+    [[ ! -d "$aluno_dir" ]] && continue
+
     aluno=$(basename "$aluno_dir")
 
-    [[ -n "$ONLY_ALUNO" && "$aluno" != *"$ONLY_ALUNO"* ]] && continue
+    # Ignora diretórios/arquivos de log de clone
+    [[ "$aluno" == *.clone.log ]] && continue
 
-    echo "📝 Corrigindo $aluno"
+    [[ -n "$ALUNO_ESPECIFICO" && "$aluno" != "$ALUNO_ESPECIFICO" ]] && continue
 
-    linha="$aluno"
-    soma_notas=0
-    qtd_trabalhos=0
+    echo "==> Corrigindo $aluno"
 
-    if [[ $CORRIGE_T1 -eq 1 ]]; then
-        t1=$(corrigir_trabalho "$aluno_dir" "trabalho1" "$CORRETOR_T1")
-        linha+=",$t1"
-        nota_t1=$(echo "$t1" | cut -d',' -f3)
-        soma_notas=$(awk "BEGIN{print $soma_notas + $nota_t1}")
-        qtd_trabalhos=$((qtd_trabalhos + 1))
+    t1_ac=0; t1_fa=0; t1_no="0.00"; t1_obs=""
+    t2_ac=0; t2_fa=0; t2_no="0.00"; t2_obs=""
+
+    if $CORRIGIR_T1 && [[ -d "$aluno_dir/trabalho1" ]]; then
+        echo "   - Trabalho 1"
+        cd "$aluno_dir/trabalho1" || continue
+        IFS=',' read t1_ac t1_fa t1_no t1_obs < <(
+            corrigir_trabalho "trabalho1.c" "$URL_CORRETOR_T1" "$TOTAL_TESTES_T1"
+        )
+        cd - >/dev/null
     fi
 
-    if [[ $CORRIGE_T2 -eq 1 ]]; then
-        t2=$(corrigir_trabalho "$aluno_dir" "trabalho2" "$CORRETOR_T2")
-        linha+=",$t2"
-        nota_t2=$(echo "$t2" | cut -d',' -f3)
-        soma_notas=$(awk "BEGIN{print $soma_notas + $nota_t2}")
-        qtd_trabalhos=$((qtd_trabalhos + 1))
+    if $CORRIGIR_T2 && [[ -d "$aluno_dir/trabalho2" ]]; then
+        echo "   - Trabalho 2"
+        cd "$aluno_dir/trabalho2" || continue
+        IFS=',' read t2_ac t2_fa t2_no t2_obs < <(
+            corrigir_trabalho "trabalho2.c" "$URL_CORRETOR_T2" "$TOTAL_TESTES_T2"
+        )
+        cd - >/dev/null
     fi
 
-    if [[ $qtd_trabalhos -gt 0 ]]; then
-        nota_final=$(awk "BEGIN{printf \"%.2f\", $soma_notas / $qtd_trabalhos}")
-    else
-        nota_final="0.00"
-    fi
+    nota_final=$(awk -v n1="$t1_no" -v n2="$t2_no" '
+        BEGIN { printf "%.2f", (n1 + n2) / 2 }
+    ')
 
-    linha+=",$nota_final"
-    echo "$linha" >> "$OUTPUT_CSV"
+    echo "$aluno,$t1_ac,$t1_fa,$t1_no,$t1_obs,$t2_ac,$t2_fa,$t2_no,$t2_obs,$nota_final" >> "$CSV_SAIDA"
 done
-
-echo "✔ Correção finalizada"
-echo "📄 CSV: $OUTPUT_CSV"

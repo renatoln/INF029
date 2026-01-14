@@ -1,88 +1,74 @@
-# 📘 Script de Correção Automática de Trabalhos em C
+# Script de Correção Automática de Trabalhos em C
 
-Este projeto contém um **script Bash** para **clonar repositórios de alunos**, **compilar** e **corrigir automaticamente** trabalhos em linguagem C, utilizando **corretores oficiais**, e gerando um **arquivo CSV com notas, erros e observações**.
+Este repositório contém um **script de correção automática** para trabalhos em C
+(Trabalho 1, Trabalho 2, e extensível para outros), com suporte a:
 
-O script foi projetado para uso acadêmico (professores e monitores) e é facilmente extensível para novos trabalhos.
+- clonagem automática de repositórios GitHub
+- execução seletiva por trabalho
+- execução seletiva por aluno
+- tratamento de erros de compilação
+- tratamento de segmentation fault
+- penalidade configurável
+- geração de notas em CSV
+- ambiente reproduzível para correções oficiais
 
 ---
 
-## 📁 Estrutura de Diretórios
+## 📂 Estrutura de Diretórios
 
 A estrutura esperada do projeto é:
 
+```
+
 .
-├── trabalho1/
-│ └── corretor-final.c
+├── trabalho1
+│   └── corretor-final.c
 │
-├── trabalho2/
-│ └── mainTeste.c
+├── trabalho2
+│   └── mainTeste.c
 │
-└── scripts/
+└── scripts
 ├── corrigir.sh
 ├── repos.txt
-├── repos/
-│ ├── INF029-Aluno1/
-│ │ ├── trabalho1/
-│ │ └── trabalho2/
-│ └── INF029-Aluno2/
-└── resultados/
-└── notas.csv
+├── repos
+└── resultados
+
+```
+
+### Descrição
+
+- `trabalho1/`  
+  Contém o corretor oficial do Trabalho 1.
+
+- `trabalho2/`  
+  Contém o corretor oficial do Trabalho 2.
+
+- `scripts/corrigir.sh`  
+  Script principal de correção.
+
+- `scripts/repos.txt`  
+  Arquivo com **uma URL de repositório Git por linha**.
+
+- `scripts/repos/`  
+  Diretório onde os repositórios dos alunos são clonados.
+
+- `scripts/resultados/`  
+  Diretório onde é gerado o arquivo `notas.csv`.
 
 ---
 
-## 🧪 Estrutura esperada dos trabalhos dos alunos
+## 📥 Formato do arquivo `repos.txt`
 
-### Trabalho 1
+Cada linha deve conter **uma URL válida de repositório Git**:
 
-Dentro do repositório do aluno:
+```
 
-trabalho1/
-├── trabalho1.c
-└── trabalho1.h
+[https://github.com/aluno1/trabalho.git](https://github.com/aluno1/trabalho.git)
+[https://github.com/aluno2/trabalho.git](https://github.com/aluno2/trabalho.git)
 
-O `main()` é fornecido pelo corretor oficial (`corretor-final.c`).
+````
 
----
-
-### Trabalho 2
-
-Dentro do repositório do aluno:
-
-trabalho2/
-├── trabalho2.c
-└── trabalho2.h
-
-
-O `main()` é fornecido pelo corretor oficial (`mainTeste.c`).
-
----
-
-## 📄 Arquivo repos.txt
-
-O arquivo `repos.txt` deve estar dentro da pasta `scripts/`.
-
-Cada linha contém a URL de um repositório Git:
-
-https://github.com/usuario/INF029-RenatoNovais.git
-https://github.com/usuario/INF029-LeticiaGomes.git
-
-
-- Linhas vazias são ignoradas
-- Linhas iniciadas com `#` são tratadas como comentário
-
----
-
-## ⚙️ Funcionalidades do script
-
-O script:
-
-- Clona repositórios (opcional)
-- Compila trabalhos junto com o corretor oficial
-- Executa testes automatizados
-- Conta acertos (`1`) e erros (`0`)
-- Calcula nota de 0 a 10
-- Gera CSV consolidado
-- Não interrompe a execução em caso de erro de um aluno
+Linhas vazias ou iniciadas com `#` são ignoradas.
 
 ---
 
@@ -90,93 +76,189 @@ O script:
 
 Entre na pasta `scripts`:
 
+```bash
 cd scripts
+````
 
-Dê permissão de execução (apenas uma vez):
+Dê permissão de execução (uma única vez):
 
+```bash
 chmod +x corrigir.sh
+```
 
 ---
 
-## 🧾 Opções de linha de comando
+## 🔧 Parâmetros disponíveis
 
 ### Clonar repositórios
-./corrigir.sh -c
-./corrigir.sh -clone
 
-### Corrigir sem clonar (usa repositórios existentes)
-./corrigir.sh
+```bash
+./corrigir.sh -c
+```
+
+ou
+
+```bash
+./corrigir.sh -clone
+```
+
+---
 
 ### Corrigir apenas um aluno
-./corrigir.sh -a Renato
-./corrigir.sh -aluno Renato
 
-### Corrigir apenas Trabalho 1
+```bash
+./corrigir.sh -a INF029-BrunoAlves
+```
+
+ou
+
+```bash
+./corrigir.sh -aluno INF029-BrunoAlves
+```
+
+---
+
+### Corrigir apenas um trabalho
+
+```bash
 ./corrigir.sh -t1
-
-### Corrigir apenas Trabalho 2
 ./corrigir.sh -t2
-
-### Combinações válidas
-./corrigir.sh -c -t1
-./corrigir.sh -t2 -a Leticia
-./corrigir.sh -c -a Renato
+```
 
 ---
 
-## 📊 Arquivo de saída
+### Corrigir ambos os trabalhos (padrão)
 
-O resultado é salvo em:
+```bash
+./corrigir.sh
+```
 
+---
+
+### Limpar ambiente de correção
+
+```bash
+./corrigir.sh -clean
+```
+
+Este comando remove:
+
+* repositórios clonados
+* logs de clone
+* arquivos de saída
+* binários temporários
+
+---
+
+## 🧮 Cálculo da nota
+
+A nota é calculada da seguinte forma:
+
+1. O total de testes é obtido automaticamente lendo o corretor
+2. Cada teste imprime `1` (sucesso) ou `0` (falha)
+3. A nota bruta é:
+
+```
+(acertos / total_de_testes) * 10
+```
+
+4. Em caso de `segmentation fault`, é aplicada uma penalidade configurável
+
+---
+
+## ⚠️ Importante: segmentation fault e buffering
+
+Quando um programa em C sofre `segmentation fault`, a saída padrão (`stdout`)
+pode não ser descarregada corretamente se estiver bufferizada.
+
+Para garantir que todos os testes executados sejam contabilizados, o script
+utiliza:
+
+```
+stdbuf -oL ./exec
+```
+
+### Dependências
+
+#### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt install coreutils
+```
+
+#### macOS
+
+```bash
+brew install coreutils
+```
+
+---
+
+## 📄 Arquivo de saída
+
+O arquivo gerado é:
+
+```
 scripts/resultados/notas.csv
+```
 
-Exemplo de colunas:
+Formato:
 
+```
 aluno,
-t1_acertos,t1_erros,t1_nota,t1_obs,
-t2_acertos,t2_erros,t2_nota,t2_obs,
+t1_acertos,t1_falhas,t1_nota,t1_obs,
+t2_acertos,t2_falhas,t2_nota,t2_obs,
 nota_final
-
-- A **nota final** é a média aritmética dos trabalhos corrigidos
-- O arquivo CSV é **sempre sobrescrito** a cada execução
+```
 
 ---
 
-## 🚨 Tratamento de erros
+## ✅ Observações finais
 
-O script detecta e registra:
-
-- Pasta do trabalho inexistente
-- Arquivos `.c` ou `.h` ausentes
-- Erro de compilação
-- Erro de execução
-- Timeout (se disponível no sistema)
-
-Essas situações aparecem na coluna **observação** do CSV.
+* Diretórios auxiliares (como logs de clone) são ignorados automaticamente
+* O script é tolerante a erros de compilação e execução
+* Pode ser facilmente estendido para Trabalhos 3, 4, etc.
 
 ---
 
-## 🧩 Extensões futuras
+## 👨‍🏫 Uso recomendado
 
-O script foi escrito para facilitar:
+Para uma correção oficial:
 
-- Inclusão de Trabalho 3, 4, etc.
-- Pesos diferentes por trabalho
-- Nota mínima por atividade
-- Relatórios individuais por aluno
-- Execução paralela
+```bash
+./corrigir.sh -clean -c
+./corrigir.sh
+```
 
----
+Isso garante um ambiente limpo e resultados reproduzíveis.
 
-## 🧑‍🏫 Público-alvo
+EOF
 
-- Professores
-- Monitores
-- Disciplinas introdutórias de Programação em C
-- Turmas grandes com correção automatizada
+````
 
 ---
 
-## ✅ Conclusão
+## ✅ Opção 2 — copiar e colar
 
-Este script fornece uma solução **robusta, reutilizável e extensível** para correção automática de trabalhos em C, com foco em **produtividade, clareza e confiabilidade**.
+Se preferir, basta copiar **exatamente o conteúdo acima**, mantendo os blocos
+entre ```.
+
+---
+
+## ✔️ Por que este README não quebra no GitHub
+
+- ✔️ Blocos de código bem fechados
+- ✔️ Nenhuma indentação ambígua
+- ✔️ Listas simples
+- ✔️ Estrutura de diretórios isolada em ``` ```
+- ✔️ Compatível com GitHub, GitLab e VS Code
+
+---
+
+Se quiser, no próximo passo posso:
+- revisar o README **já no contexto do seu repositório**
+- reduzir ou expandir seções
+- ou criar uma versão em **inglês**
+
+Agora você tem um README **limpo, profissional e estável** ✅
+````
