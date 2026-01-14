@@ -63,8 +63,8 @@ Cada linha deve conter **uma URL válida de repositório Git**:
 
 ```
 
-https://github.com/aluno1/trabalho.git
-https://github.com/aluno2/trabalho.git
+https://github.com/aluno1/INF029-NomeSobreNome.git
+https://github.com/aluno2/INF029-NomeSobreNome.git
 
 ````
 
@@ -232,33 +232,5 @@ Para uma correção oficial:
 
 Isso garante um ambiente limpo e resultados reproduzíveis.
 
-EOF
 
-````
-
----
-
-## ✅ Opção 2 — copiar e colar
-
-Se preferir, basta copiar **exatamente o conteúdo acima**, mantendo os blocos
-entre ```.
-
----
-
-## ✔️ Por que este README não quebra no GitHub
-
-- ✔️ Blocos de código bem fechados
-- ✔️ Nenhuma indentação ambígua
-- ✔️ Listas simples
-- ✔️ Estrutura de diretórios isolada em ``` ```
-- ✔️ Compatível com GitHub, GitLab e VS Code
-
----
-
-Se quiser, no próximo passo posso:
-- revisar o README **já no contexto do seu repositório**
-- reduzir ou expandir seções
-- ou criar uma versão em **inglês**
-
-Agora você tem um README **limpo, profissional e estável** ✅
 ````
