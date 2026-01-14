@@ -34,6 +34,7 @@ A estrutura esperada do projeto é:
 └── resultados
 
 ```
+obs. Essa é a estrutura deste repositório. Se você clonar ele, já vai estar tudo certo. Basta adicionar o link do seu repositíro em repos.tx, conforme explicado abaixo.
 
 ### Descrição
 
