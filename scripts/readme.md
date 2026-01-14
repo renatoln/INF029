@@ -63,8 +63,8 @@ Cada linha deve conter **uma URL válida de repositório Git**:
 
 ```
 
-[https://github.com/aluno1/trabalho.git](https://github.com/aluno1/trabalho.git)
-[https://github.com/aluno2/trabalho.git](https://github.com/aluno2/trabalho.git)
+https://github.com/aluno1/trabalho.git
+https://github.com/aluno2/trabalho.git
 
 ````
 
