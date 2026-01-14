@@ -231,6 +231,3 @@ Para uma correção oficial:
 ```
 
 Isso garante um ambiente limpo e resultados reproduzíveis.
-
-
-````
