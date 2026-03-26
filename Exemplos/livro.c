@@ -1,10 +1,20 @@
 #include <stdio.h>
 
-int main(){
+typedef struct{
+    int id; //chave primária / identificador
+    int ano;
+    int edicao;
+}Livro;
 
+#define TAM_LISTA_LIVRO 3
+
+
+int main(){
+    int codigo = 1;
 	printf("Olá mundo\n");
 
-    int listaAnos[3];
+    Livro listaLivros[TAM_LISTA_LIVRO];
+    
     int sair = 0;
     int qtdLivros = 0;
     int opcao;
@@ -24,13 +34,17 @@ int main(){
             }
             case 1:{
                 //cadastrar livro
-                if (qtdLivros == 3){
+                if (qtdLivros == TAM_LISTA_LIVRO){
                     printf("Biblioteca cheia!\n");
                 }else{
-                    printf("Digite um ano: \n");
+                    listaLivros[qtdLivros].id = codigo;
                     int ano; 
+                    printf("Digite o ano: ");
                     scanf("%d", &ano);
-                    listaAnos[qtdLivros] = ano;
+                    listaLivros[qtdLivros].ano = ano;
+                    printf("Digite a edicao: ");
+                    scanf("%d", &listaLivros[qtdLivros].edicao);
+                    codigo++;
                     qtdLivros ++;
                 }
                 break;
@@ -39,12 +53,43 @@ int main(){
                 //listar livro
                 printf("### Listando os livros ###\n");
                 for (int i = 0; i < qtdLivros; i++){
-                    printf("%d\n", listaAnos[i]);
+                    
+                    printf("Id: %d - Ano: %d - Edição: %d\n", listaLivros[i].id, listaLivros[i].ano, listaLivros[i].edicao);
                 }
                 break;
             }
             case 3:{
                 //atualizar livro
+                printf("### Listando os livros ###\n");
+                for (int i = 0; i < qtdLivros; i++){
+                    
+                    printf("Código: %d - Ano: %d - Edição: %d\n", listaLivros[i].id, listaLivros[i].ano, listaLivros[i].edicao);
+                }
+                printf("Digite o código do livro que você deseja atualizar: ");
+                int id, novoAno, novaEdicao;
+                scanf("%d", &id);
+
+                
+                int achou = 0;
+                for (int i = 0; i < qtdLivros; i++){
+                    if (listaLivros[i].id == id){
+                        achou = 1;
+                        printf("Digite o novo Ano: ");
+                        scanf("%d", &novoAno);
+
+                        printf("Digite a nova Edição: ");
+                        scanf("%d", &novaEdicao);
+                        listaLivros[i].ano = novoAno;
+                        listaLivros[i].edicao = novaEdicao;
+                        break;
+                    }
+                    
+                }
+                if (achou == 0){
+                    printf("Livro não encontrado!\n");
+                }
+
+
                 break;
             }
             case 4:{
