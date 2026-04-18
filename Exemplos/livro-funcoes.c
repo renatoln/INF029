@@ -13,6 +13,7 @@ int menu();
 int cadastrarLivro(int qtdLivros, Livro meusLivros[], int codigo);
 void listarLivros(int qtdLivros, Livro listaLivros[]);
 void atualizarLivro(int qtdLivros, Livro listaLivros[]);
+int excluirLivro(int qtdLivros);
 
 int main(){
     int codigo = 1;
@@ -51,13 +52,9 @@ int main(){
                 break;
             }
             case 4:{
-                //excluir livro
-                if (qtdLivros == 0){
-                    printf("Biblioteca vazia!\n");
-                }else{
-                    printf("Livro excluido com sucesso!\n");
+                int retorno = excluirLivro(qtdLivros);
+                if (retorno == 1) 
                     qtdLivros--;
-                }
                 break;
             }
         }
@@ -138,5 +135,16 @@ void atualizarLivro(int qtdLivros, Livro listaLivros[]){
     }
     if (achou == 0){
         printf("Livro não encontrado!\n");
+    }
+}
+
+int excluirLivro(int qtdLivros){
+    //excluir livro
+    if (qtdLivros == 0){
+        printf("Biblioteca vazia!\n");
+        return 0;
+    }else{
+        printf("Livro excluido com sucesso!\n");
+        return 1;
     }
 }
