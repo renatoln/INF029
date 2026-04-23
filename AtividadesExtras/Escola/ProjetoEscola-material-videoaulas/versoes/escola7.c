@@ -153,7 +153,7 @@ void listarAluno(int qtdAluno, Aluno listaAluno[]){
 }
 
 int excluirAluno(int qtdAluno, Aluno listaAluno[]){
-  printf("Escluir Aluno\n");
+  printf("Excluir Aluno\n");
   printf("Digite a matricula\n");
   int matricula;
   scanf("%d", &matricula);
