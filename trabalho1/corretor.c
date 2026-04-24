@@ -32,10 +32,10 @@ void testQ7();
 
 int main()
 {
-    //testSomar();
-    //testFatorial();
-    testQ1();
-    /*testQ2();
+    testSomar();
+    testFatorial();
+    /*testQ1();
+    testQ2();
     testQ3();
     testQ4();
     testQ5();
@@ -60,7 +60,6 @@ void testSomar()
     printf("%d\n", somar(30, -9) == 21);
     printf("%d\n", somar(-2, 8) == 6);
     printf("%d\n", somar(1000, 99) == 1099);
-
 }
 
 void testFatorial()
