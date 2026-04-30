@@ -1,10 +1,7 @@
 - baixar o código
-- renomear os arquivos 
-	PrimeiroUltimoNomeMatricula.c e 
-	PrimeiroUltimoNomeMatricula.h para
-	seus dados
+- crie uma pasta no seu repositório chamada trabalho1
+- adicione os arquivos trabalho1.c trabalho1.h e corretor.c
 - compilar 
-	- gcc PrimeiroUltimoNomeMATRICULA.c corretor.c -o T1
-	- lembrar de substituir o comando acima pelo novo nome
+	- gcc trabalho1.c corretor.c -o T1
 - rodar
 	- ./T1
